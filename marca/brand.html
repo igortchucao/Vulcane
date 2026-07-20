@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>dotVulcan · Identidade de Marca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --obsidian:#0b0a0f;      /* fundo — rocha vulcânica */
+  --basalt:#14121a;        /* superfície */
+  --basalt-2:#1c1922;
+  --line:#2a2632;
+  --smoke:#f4f1ec;         /* texto claro — fumaça branca */
+  --ash:#9a94a3;           /* texto secundário — cinza aço */
+  --ember:#ff5a1f;         /* PRIMÁRIA — brasa/lava */
+  --ember-2:#ff7d3c;
+  --magma:#c7361b;         /* profundidade — magma */
+  --gold:#ffc24d;          /* faísca — ouro fundido */
+  --steel:#6f7580;         /* aço forjado */
+  --sg:'Space Grotesk',system-ui,sans-serif;
+  --inter:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--obsidian);color:var(--smoke);font-family:var(--inter);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+h1,h2,h3,.sg{font-family:var(--sg)}
+.kicker{font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;color:var(--ember);font-weight:600;font-family:var(--sg)}
+.sec{padding:72px 0;border-top:1px solid var(--line)}
+.sec-title{font-size:1.9rem;font-weight:700;margin:10px 0 8px}
+.sec-sub{color:var(--ash);max-width:600px}
+
+/* hero */
+.hero{position:relative;padding:96px 0 84px;text-align:center;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:900px;height:640px;background:radial-gradient(ellipse at center,rgba(255,90,31,.22),transparent 62%);pointer-events:none;filter:blur(6px)}
+.hero .in{position:relative}
+.wordmark{font-family:var(--sg);font-weight:700;font-size:clamp(3rem,10vw,6.2rem);letter-spacing:-.03em;line-height:1;display:inline-flex;align-items:baseline}
+.wordmark .dot{color:var(--ash);font-weight:400}
+.wordmark .v{color:var(--smoke)}
+.wordmark .spark{color:var(--ember);text-shadow:0 0 26px rgba(255,90,31,.75)}
+.hero .tag{margin-top:26px;font-family:var(--sg);font-size:clamp(1.1rem,3vw,1.7rem);font-weight:500;color:var(--smoke)}
+.hero .tag b{color:var(--ember)}
+.hero .sub{margin-top:14px;color:var(--ash);font-size:1.02rem;max-width:520px;margin-left:auto;margin-right:auto}
+
+/* conceito */
+.concept{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.concept p{color:var(--ash);margin-bottom:14px}
+.concept p strong{color:var(--smoke)}
+.forge-visual{aspect-ratio:1;border:1px solid var(--line);border-radius:20px;background:radial-gradient(circle at 50% 78%,rgba(255,90,31,.35),transparent 58%),var(--basalt);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.forge-visual svg{width:56%;filter:drop-shadow(0 0 30px rgba(255,90,31,.5))}
+
+/* logo directions */
+.logos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px}
+.logo-card{background:var(--basalt);border:1px solid var(--line);border-radius:16px;padding:30px 22px;text-align:center}
+.logo-card .box{height:120px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.logo-card h3{font-size:1rem;font-weight:600;margin-bottom:4px}
+.logo-card p{font-size:.84rem;color:var(--ash)}
+.mark svg{height:88px;width:auto}
+
+/* wordmark lockups */
+.lockups{display:flex;gap:16px;flex-wrap:wrap;margin-top:26px}
+.lockup{flex:1;min-width:240px;background:var(--basalt);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;align-items:center;justify-content:center}
+.lockup.light{background:var(--smoke)}
+.wm{font-family:var(--sg);font-weight:700;font-size:2rem;letter-spacing:-.02em;display:inline-flex;align-items:baseline}
+.wm .d{font-weight:400;color:var(--ash)}
+.wm .dot-spark{width:9px;height:9px;border-radius:50%;background:var(--ember);box-shadow:0 0 14px rgba(255,90,31,.9);margin:0 3px 4px}
+.lockup.light .wm .v{color:#14121a}
+.lockup.light .wm .d{color:var(--steel)}
+
+/* palette */
+.palette{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.sw{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--basalt)}
+.sw .chip{height:96px}
+.sw .meta{padding:12px 14px}
+.sw .meta b{font-family:var(--sg);font-size:.92rem;display:block}
+.sw .meta code{font-size:.78rem;color:var(--ash);font-family:var(--inter)}
+.sw .meta span{font-size:.72rem;color:var(--steel);display:block;margin-top:3px}
+
+/* type */
+.type-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.type-card{background:var(--basalt);border:1px solid var(--line);border-radius:16px;padding:28px}
+.type-card .lbl{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ember);margin-bottom:14px}
+.type-card .big{font-family:var(--sg);font-weight:700;font-size:2.6rem;line-height:1;margin-bottom:6px}
+.type-card .alpha{color:var(--ash);font-family:var(--sg);letter-spacing:.04em}
+.type-card.body .big{font-family:var(--inter);font-weight:600}
+.type-card .sample{color:var(--ash);margin-top:12px;font-size:.95rem}
+
+/* slogans */
+.slogans{display:flex;flex-direction:column;gap:12px}
+.slogan{background:var(--basalt);border:1px solid var(--line);border-left:3px solid var(--ember);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:14px}
+.slogan.star{border-color:var(--ember);background:linear-gradient(90deg,rgba(255,90,31,.1),var(--basalt))}
+.slogan .txt{font-family:var(--sg);font-size:1.15rem;font-weight:600}
+.slogan .role{margin-left:auto;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ash)}
+.slogan.star .role{color:var(--ember)}
+
+/* personality */
+.traits{display:flex;flex-wrap:wrap;gap:10px}
+.trait{background:var(--basalt);border:1px solid var(--line);border-radius:100px;padding:10px 20px;font-family:var(--sg);font-weight:500;font-size:.92rem}
+.trait b{color:var(--ember)}
+
+/* buttons demo */
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.btn{font-family:var(--sg);font-weight:600;border:none;border-radius:11px;padding:15px 28px;cursor:pointer;font-size:.95rem}
+.btn.primary{background:var(--ember);color:#160a04}
+.btn.primary:hover{background:var(--ember-2)}
+.btn.ghost{background:transparent;color:var(--smoke);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--ember);color:var(--ember)}
+
+footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--steel);font-size:.84rem}
+
+@media(max-width:820px){
+  .concept,.type-grid{grid-template-columns:1fr}
+  .logos{grid-template-columns:1fr}
+  .palette{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 100 100">
+    <path d="M11 6 L31 6 L50 50 L72 6 L86 6 L56 66 L44 66 Z" fill="var(--m1,#ff5a1f)"/>
+    <circle cx="50" cy="84" r="10" fill="var(--m3,#ff5a1f)"/>
+  </symbol>
+</svg>
+
+<section class="hero">
+  <div class="wrap in">
+    <span class="kicker">Identidade de Marca · Proposta</span>
+    <div style="margin-top:24px">
+      <svg viewBox="0 0 100 100" style="height:110px;filter:drop-shadow(0 0 30px rgba(255,90,31,.55))"><use href="#mark"/></svg>
+    </div>
+    <div style="margin-top:18px" class="wordmark">
+      <span class="dot">dot</span><span class="v">Vulcan</span><span class="spark">.</span>
+    </div>
+    <div class="tag">Nós não fazemos sites. Nós os <b>forjamos.</b></div>
+    <p class="sub">A forja digital — onde marcas são moldadas no fogo e acabadas no detalhe.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <span class="kicker">O conceito</span>
+    <h2 class="sec-title">Fogo &amp; Precisão</h2>
+    <div class="concept" style="margin-top:32px">
+      <div>
+        <p><strong>Vulcano</strong> era o deus ferreiro de Roma — no fogo sob o Etna, forjava as armas dos deuses. Martelo, bigorna, faísca. Criação, poder e ofício.</p>
+        <p>O <strong>“dot” (.)</strong> é o mundo digital: o ponto, o domínio, o pixel, a precisão, o detalhe que faz a diferença.</p>
+        <p><strong>dotVulcan</strong> une os dois: a <strong>energia que vende</strong> (o fogo) com a <strong>precisão que converte</strong> (o dot). Cada site é uma peça forjada — sob medida, resistente e feita para impactar.</p>
+      </div>
+      <div class="forge-visual">
+        <svg viewBox="0 0 100 100" style="width:56%"><use href="#mark"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <span class="kicker">Símbolo</span>
+    <h2 class="sec-title">O V Forjado</h2>
+    <p class="sec-sub">O símbolo oficial: duas lâminas convergindo formam o <strong style="color:var(--smoke)">“V” de Vulcan</strong> e apontam para o <strong style="color:var(--smoke)">ponto em brasa</strong> — o “dot”. O braço esquerdo é mais pesado que o direito: a massa do martelo contra o cabo, dando tensão e caráter. Um só símbolo, em todas as suas versões.</p>
+    <div class="logos">
+      <div class="logo-card">
+        <div class="box"><svg viewBox="0 0 100 100" style="height:100px"><use href="#mark"/></svg></div>
+        <h3>Principal</h3>
+        <p>Cor da marca sobre fundo escuro.</p>
+      </div>
+      <div class="logo-card">
+        <div class="box"><svg viewBox="0 0 100 100" style="height:100px;--m1:#f4f1ec;--m2:#f4f1ec;--m3:#f4f1ec"><use href="#mark"/></svg></div>
+        <h3>Monocromático</h3>
+        <p>Uma cor só — para usos restritos.</p>
+      </div>
+      <div class="logo-card" style="background:var(--smoke)">
+        <div class="box"><svg viewBox="0 0 100 100" style="height:100px;--m1:#14121a;--m2:#ff5a1f;--m3:#ff5a1f"><use href="#mark"/></svg></div>
+        <h3 style="color:#14121a">Fundo claro</h3>
+        <p style="color:#6f7580">Para fundos brancos.</p>
+      </div>
+    </div>
+
+    <div class="lockups">
+      <div class="lockup" style="gap:16px">
+        <svg viewBox="0 0 100 100" style="height:52px;flex-shrink:0"><use href="#mark"/></svg>
+        <span class="wm"><span class="d">dot</span><span class="v">Vulcan</span></span>
+      </div>
+      <div class="lockup light" style="gap:16px">
+        <svg viewBox="0 0 100 100" style="height:52px;flex-shrink:0;--m1:#14121a;--m2:#ff5a1f;--m3:#ff5a1f"><use href="#mark"/></svg>
+        <span class="wm"><span class="d">dot</span><span class="v">Vulcan</span></span>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:14px;align-items:center;margin-top:22px;flex-wrap:wrap">
+      <span style="font-size:.82rem;color:var(--ash)">Favicon / ícone de app:</span>
+      <div style="width:56px;height:56px;border-radius:14px;background:var(--basalt-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 100 100" style="height:38px"><use href="#mark"/></svg></div>
+      <div style="width:56px;height:56px;border-radius:14px;background:#ff5a1f;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 100 100" style="height:38px;--m1:#160a04;--m2:#160a04;--m3:#160a04"><use href="#mark"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <span class="kicker">Paleta</span>
+    <h2 class="sec-title">Cores da forja</h2>
+    <p class="sec-sub">Rocha vulcânica escura + brasa incandescente. Poder, calor e sofisticação — e o dark-first que domina o design de tech em 2026.</p>
+    <div class="palette" style="margin-top:30px">
+      <div class="sw"><div class="chip" style="background:#0b0a0f"></div><div class="meta"><b>Obsidiana</b><code>#0B0A0F</code><span>Fundo principal</span></div></div>
+      <div class="sw"><div class="chip" style="background:#14121a"></div><div class="meta"><b>Basalto</b><code>#14121A</code><span>Superfícies / cards</span></div></div>
+      <div class="sw"><div class="chip" style="background:#ff5a1f"></div><div class="meta"><b>Brasa</b><code>#FF5A1F</code><span>Primária / ação</span></div></div>
+      <div class="sw"><div class="chip" style="background:#ffc24d"></div><div class="meta"><b>Faísca</b><code>#FFC24D</code><span>Destaque / ouro</span></div></div>
+      <div class="sw"><div class="chip" style="background:#c7361b"></div><div class="meta"><b>Magma</b><code>#C7361B</code><span>Profundidade</span></div></div>
+      <div class="sw"><div class="chip" style="background:#6f7580"></div><div class="meta"><b>Aço</b><code>#6F7580</code><span>Neutro forjado</span></div></div>
+      <div class="sw"><div class="chip" style="background:#9a94a3"></div><div class="meta"><b>Cinza fumaça</b><code>#9A94A3</code><span>Texto secundário</span></div></div>
+      <div class="sw"><div class="chip" style="background:#f4f1ec"></div><div class="meta"><b>Fumaça branca</b><code>#F4F1EC</code><span>Texto claro</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <span class="kicker">Tipografia</span>
+    <h2 class="sec-title">Forjada e precisa</h2>
+    <div class="type-grid" style="margin-top:28px">
+      <div class="type-card">
+        <div class="lbl">Display · Space Grotesk</div>
+        <div class="big">dotVulcan</div>
+        <div class="alpha">AaBbCc · 0123456789</div>
+        <p class="sample">Técnica, geométrica e com personalidade. Para títulos, logo e chamadas — passa precisão de engenharia.</p>
+      </div>
+      <div class="type-card body">
+        <div class="lbl">Texto · Inter</div>
+        <div class="big">Legível em tudo</div>
+        <div class="alpha" style="font-family:var(--inter)">AaBbCc · 0123456789</div>
+        <p class="sample">Neutra, limpa e confortável em qualquer tela. Para corpo de texto, botões e interfaces.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <span class="kicker">Slogan</span>
+    <h2 class="sec-title">Assinaturas</h2>
+    <div class="slogans" style="margin-top:28px">
+      <div class="slogan star"><span class="txt">Forjamos sites que vendem.</span><span class="role">Principal</span></div>
+      <div class="slogan"><span class="txt">A forja digital.</span><span class="role">Curta / assinatura</span></div>
+      <div class="slogan"><span class="txt">Nós não fazemos sites. Nós os forjamos.</span><span class="role">Manifesto</span></div>
+      <div class="slogan"><span class="txt">Do fogo à conversão.</span><span class="role">Campanha</span></div>
+      <div class="slogan"><span class="txt">Presença digital forjada no detalhe.</span><span class="role">Institucional</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <span class="kicker">Personalidade</span>
+    <h2 class="sec-title">Como a marca fala</h2>
+    <div class="traits" style="margin:26px 0">
+      <span class="trait"><b>Forte</b>, não agressiva</span>
+      <span class="trait"><b>Precisa</b>, não fria</span>
+      <span class="trait"><b>Artesã</b> — ofício e cuidado</span>
+      <span class="trait"><b>Confiante</b> e direta</span>
+      <span class="trait"><b>Premium</b>, com atitude</span>
+      <span class="trait"><b>Transformadora</b></span>
+    </div>
+    <p class="sec-sub">Voz de mestre-ferreiro digital: fala com autoridade e simplicidade, promete resultado e entrega ofício. Nada de jargão vazio — só fogo e precisão.</p>
+    <div class="btns">
+      <button class="btn primary">Forjar meu site</button>
+      <button class="btn ghost">Ver o trabalho</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span class="sg" style="color:var(--smoke)">dotVulcan</span> · A forja digital · proposta de identidade v1</div>
+</footer>
+
+</body>
+</html>

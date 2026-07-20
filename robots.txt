@@ -1,0 +1,11 @@
+# dotVulcan · A forja digital
+# A página de vendas deve ser indexada. Todo o resto, não.
+
+User-agent: *
+Allow: /$
+Allow: /index.html
+Disallow: /prototipo.html
+Disallow: /clientes/
+Disallow: /marca/
+
+Sitemap: /sitemap.xml

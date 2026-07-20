@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>dotVulcan · Estudo de Abstração</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --obsidian:#0b0a0f;--basalt:#14121a;--basalt-2:#1c1922;--line:#2a2632;
+  --smoke:#f4f1ec;--ash:#9a94a3;--ember:#ff5a1f;--gold:#ffc24d;--steel:#6f7580;
+  --sg:'Space Grotesk',system-ui,sans-serif;--inter:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--obsidian);color:var(--smoke);font-family:var(--inter);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+h1,h2,h3,.sg{font-family:var(--sg)}
+.kicker{font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ember);font-weight:600;font-family:var(--sg)}
+
+.top{padding:60px 0 40px;text-align:center;position:relative;overflow:hidden}
+.top::before{content:"";position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:760px;height:620px;background:radial-gradient(circle,rgba(255,90,31,.14),transparent 62%);pointer-events:none}
+.top .in{position:relative}
+.top h1{font-size:clamp(2rem,5.4vw,3.2rem);font-weight:700;margin:14px 0 14px;letter-spacing:-.02em}
+.top p{color:var(--ash);max-width:640px;margin:0 auto}
+.back{display:inline-block;margin-top:22px;font-size:.84rem;color:var(--ash);border:1px solid var(--line);padding:9px 18px;border-radius:100px}
+.back:hover{border-color:var(--ember);color:var(--ember)}
+
+/* princípios */
+.principles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:44px 0}
+.pr{background:var(--basalt);border:1px solid var(--line);border-radius:14px;padding:20px}
+.pr b{font-family:var(--sg);display:block;margin-bottom:5px;font-size:.95rem}
+.pr span{font-size:.84rem;color:var(--ash)}
+
+/* opções */
+.sec{padding:20px 0 70px}
+.opt{background:var(--basalt);border:1px solid var(--line);border-radius:20px;padding:30px;margin-bottom:20px;display:grid;grid-template-columns:260px 1fr;gap:34px;align-items:center}
+.opt.win{border-color:var(--ember);box-shadow:0 0 60px -28px var(--ember)}
+.stage{aspect-ratio:1;border-radius:16px;background:radial-gradient(circle at 50% 55%,rgba(255,90,31,.16),transparent 62%),var(--obsidian);display:flex;align-items:center;justify-content:center;border:1px solid var(--line)}
+.stage svg{width:60%}
+.opt h3{font-size:1.5rem;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.pill{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;background:var(--ember);color:#160a04;padding:5px 12px;border-radius:100px;font-family:var(--sg);font-weight:700}
+.opt .why{color:var(--ash);margin:10px 0 18px}
+.opt .why b{color:var(--smoke)}
+.tests{display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap;padding-top:18px;border-top:1px solid var(--line)}
+.t{display:flex;flex-direction:column;align-items:center;gap:7px}
+.t span{font-size:.68rem;color:var(--steel);letter-spacing:.08em}
+.t .chip{background:var(--basalt-2);border:1px solid var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;padding:9px}
+.t .chip.lightbg{background:var(--smoke);border-color:var(--smoke)}
+
+/* veredito */
+.verdict{background:linear-gradient(160deg,rgba(255,90,31,.12),transparent);border:1px solid var(--line);border-radius:20px;padding:36px;margin-top:10px}
+.verdict h2{font-size:1.7rem;margin:10px 0 12px}
+.verdict p{color:var(--ash);margin-bottom:12px}
+.verdict p strong{color:var(--smoke)}
+.dual{display:flex;gap:16px;margin-top:24px;flex-wrap:wrap}
+.dual .box{flex:1;min-width:200px;border-radius:14px;padding:26px;display:flex;align-items:center;justify-content:center;gap:16px}
+.dual .box.dark{background:var(--obsidian);border:1px solid var(--line)}
+.dual .box.light{background:var(--smoke)}
+.wm{font-family:var(--sg);font-weight:700;font-size:1.7rem;letter-spacing:-.02em}
+.wm .d{font-weight:400;color:var(--ash)}
+.wm .p{color:var(--ember)}
+.dual .box.light .wm .v{color:#14121a}
+.dual .box.light .wm .d{color:var(--steel)}
+
+footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--steel);font-size:.84rem}
+@media(max-width:860px){
+  .principles{grid-template-columns:repeat(2,1fr)}
+  .opt{grid-template-columns:1fr}
+  .stage{max-width:280px;margin:0 auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ SÍMBOLOS ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- A · O Golpe -->
+  <symbol id="mA" viewBox="0 0 100 100">
+    <path d="M24 10 L45 5 L63 54 L52 58 Z" fill="var(--c,#ff5a1f)"/>
+    <circle cx="72" cy="76" r="11" fill="var(--c,#ff5a1f)"/>
+  </symbol>
+  <!-- B · A Faísca -->
+  <symbol id="mB" viewBox="0 0 100 100">
+    <path d="M45 4 C48 33 56 42 88 45 C56 48 48 57 45 86 C42 57 34 48 2 45 C34 42 42 33 45 4 Z" fill="var(--c,#ff5a1f)"/>
+    <circle cx="82" cy="80" r="8" fill="var(--c,#ff5a1f)"/>
+  </symbol>
+  <!-- C · V Forjado -->
+  <symbol id="mC" viewBox="0 0 100 100">
+    <path d="M11 6 L31 6 L50 50 L72 6 L86 6 L56 66 L44 66 Z" fill="var(--c,#ff5a1f)"/>
+    <circle cx="50" cy="84" r="10" fill="var(--c,#ff5a1f)"/>
+  </symbol>
+  <!-- D · Impacto -->
+  <symbol id="mD" viewBox="0 0 100 100">
+    <path d="M30 56 L50 40 L70 56" stroke="var(--c,#ff5a1f)" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M22 34 L50 12 L78 34" stroke="var(--c,#ff5a1f)" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".45"/>
+    <circle cx="50" cy="80" r="11" fill="var(--c,#ff5a1f)"/>
+  </symbol>
+</svg>
+
+<section class="top">
+  <div class="wrap in">
+    <span class="kicker">dotVulcan · Estudo de abstração</span>
+    <h1>Do martelo à ideia</h1>
+    <p>O martelo conta a história, mas <em>ilustra</em>. Aqui a gente destila o conceito até sobrar só a essência: <strong style="color:var(--smoke)">um golpe que cria um ponto</strong>. Quatro direções, todas testadas em tamanho real de favicon.</p>
+    <a class="back" href="brand.html">← voltar ao board da marca</a>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="principles">
+    <div class="pr"><b>Reduzir sem perder</b><span>Tirar tudo que não carrega significado.</span></div>
+    <div class="pr"><b>Geometria com sentido</b><span>Diagonal = energia. Círculo = o ponto.</span></div>
+    <div class="pr"><b>Teste dos 3 segundos</b><span>Se não dá pra descrever, é complexo demais.</span></div>
+    <div class="pr"><b>Teste de escala</b><span>Tem que viver a 16px e num outdoor.</span></div>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+
+    <!-- A -->
+    <div class="opt win">
+      <div class="stage"><svg viewBox="0 0 100 100"><use href="#mA"/></svg></div>
+      <div>
+        <h3>A · O Golpe <span class="pill">★ Recomendado</span></h3>
+        <p class="why">A redução máxima: <b>uma barra diagonal em queda</b> (a força do martelo, o movimento) <b>e o ponto</b> que ela forja. Só duas formas — nada sobra.<br><br>
+        O trunfo é o <b>duplo sentido</b>: a diagonal também é a <b>barra “/” da web</b>. Golpe de forja e sintaxe de internet no mesmo traço. Nenhuma agência tem isso.</p>
+        <div class="tests">
+          <div class="t"><div class="chip"><svg viewBox="0 0 100 100" style="width:40px"><use href="#mA"/></svg></div><span>40px</span></div>
+          <div class="t"><div class="chip"><svg viewBox="0 0 100 100" style="width:24px"><use href="#mA"/></svg></div><span>24px</span></div>
+          <div class="t"><div class="chip"><svg viewBox="0 0 100 100" style="width:16px"><use href="#mA"/></svg></div><span>16px favicon</span></div>
+          <div class="t"><div class="chip lightbg"><svg viewBox="0 0 100 100" style="width:24px;--c:#14121a"><use href="#mA"/></svg></div><span>fundo claro</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="opt">
+      <div class="stage"><svg viewBox="0 0 100 100"><use href="#mC"/></svg></div>
+      <div>
+        <h3>C · V Forjado</h3>
+        <p class="why">Duas lâminas convergindo formam o <b>“V” de Vulcan</b> e apontam para o ponto em brasa. Vira monograma e conceito ao mesmo tempo — a bigorna sugerida no espaço negativo.<br><br>
+        Mais “corporativo” e memorável como letra, porém menos único: <b>V</b> é um dos monogramas mais disputados que existem.</p>
+        <div class="tests">
+          <div class="t"><div class="chip"><svg viewBox="0 0 100 100" style="width:40px"><use href="#mC"/></svg></div><span>40px</span></div>
+          <div class="t"><div class="chip"><svg viewBox="0 0 100 100" style="width:24px"><use href="#mC"/></svg></div><span>24px</span></div>
+          <div class="t"><div class="chip"><svg viewBox="0 0 100 100" style="width:16px"><use href="#mC"/></svg></div><span>16px favicon</span></div>
+          <div class="t"><div class="chip lightbg"><svg viewBox="0 0 100 100" style="width:24px;--c:#14121a"><use href="#mC"/></svg></div><span>fundo claro</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- D -->
+    <div class="opt">
+      <div class="stage"><svg viewBox="0 0 100 100"><use href="#mD"/></svg></div>
+      <div>
+        <h3>D · Impacto</h3>
+        <p class="why">O golpe visto pela <b>onda de choque</b>: chevrons que sobem do ponto, como energia se propagando. Sugere força e crescimento (as setas para cima = resultado subindo).<br><br>
+        Risco: em tamanho pequeno pode ler como <b>ícone de sinal/wi-fi</b>. Bonito, mas menos ownable.</p>
+        <div class="tests">
+          <div class="t"><div class="chip"><svg viewBox="0 0 100 100" style="width:40px"><use href="#mD"/></svg></div><span>40px</span></div>
+          <div class="t"><div class="chip"><svg viewBox="0 0 100 100" style="width:24px"><use href="#mD"/></svg></div><span>24px</span></div>
+          <div class="t"><div class="chip"><svg viewBox="0 0 100 100" style="width:16px"><use href="#mD"/></svg></div><span>16px favicon</span></div>
+          <div class="t"><div class="chip lightbg"><svg viewBox="0 0 100 100" style="width:24px;--c:#14121a"><use href="#mD"/></svg></div><span>fundo claro</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="opt">
+      <div class="stage"><svg viewBox="0 0 100 100"><use href="#mB"/></svg></div>
+      <div>
+        <h3>B · A Faísca</h3>
+        <p class="why">A faísca da bigorna virando <b>estrela de quatro pontas</b>, com o ponto orbitando. Elegante, leve e muito “premium”.<br><br>
+        O problema: o sparkle virou <b>o clichê da era da IA</b> — está em milhares de produtos. Perde a exclusividade que a dotVulcan merece.</p>
+        <div class="tests">
+          <div class="t"><div class="chip"><svg viewBox="0 0 100 100" style="width:40px"><use href="#mB"/></svg></div><span>40px</span></div>
+          <div class="t"><div class="chip"><svg viewBox="0 0 100 100" style="width:24px"><use href="#mB"/></svg></div><span>24px</span></div>
+          <div class="t"><div class="chip"><svg viewBox="0 0 100 100" style="width:16px"><use href="#mB"/></svg></div><span>16px favicon</span></div>
+          <div class="t"><div class="chip lightbg"><svg viewBox="0 0 100 100" style="width:24px;--c:#14121a"><use href="#mB"/></svg></div><span>fundo claro</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <span class="kicker">Veredito</span>
+      <h2>A · O Golpe é a melhor</h2>
+      <p>É a única que passa nos quatro filtros ao mesmo tempo: <strong>reduz ao essencial</strong> (duas formas), <strong>carrega o conceito</strong> (o golpe que forja o ponto), <strong>sobrevive a 16px</strong> e <strong>é exclusiva</strong> — não parece nenhum outro logo do mercado.</p>
+      <p>E ganha uma camada que nenhuma das outras tem: a diagonal lê como a <strong>barra “/” de um endereço web</strong>. A marca fala “forja” para quem conhece a história e fala “digital” para todo mundo — sem precisar explicar.</p>
+      <div class="dual">
+        <div class="box dark">
+          <svg viewBox="0 0 100 100" style="height:46px"><use href="#mA"/></svg>
+          <span class="wm"><span class="d">dot</span><span class="v">Vulcan</span><span class="p">.</span></span>
+        </div>
+        <div class="box light">
+          <svg viewBox="0 0 100 100" style="height:46px;--c:#14121a"><use href="#mA"/></svg>
+          <span class="wm"><span class="d">dot</span><span class="v">Vulcan</span><span class="p">.</span></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer><div class="wrap">dotVulcan · estudo de abstração · o wordmark permanece intocado</div></footer>
+
+</body>
+</html>
