@@ -71,6 +71,26 @@ header{border-bottom:1px solid var(--line);background:rgba(13,15,20,.82);backdro
 .browser iframe{width:100%;height:620px;border:0;display:block;background:#fff}
 .preview-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:16px}
 
+/* versões comemorativas */
+.theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px}
+.theme-card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+.tc-bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:var(--bg-2);border-bottom:1px solid var(--line)}
+.tc-bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.tc-bar .u{margin-left:8px;font-size:.7rem;color:var(--muted)}
+.tc-shot{padding:26px 18px;min-height:200px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden}
+.tc-deco{position:absolute;font-size:1.5rem}
+.tc-shot h4{font-family:var(--sg);font-size:1.5rem;color:#fff;margin-bottom:6px;text-shadow:2px 2px 0 rgba(0,0,0,.4)}
+.tc-shot .sub{font-size:.82rem}
+.tc-chips{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.tc-chips span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:.72rem;padding:5px 11px;border-radius:100px;font-weight:600}
+.tc-label{padding:12px 16px;font-family:var(--sg);font-size:.98rem;display:flex;align-items:center;gap:8px}
+.tc-label .tag{margin-left:auto;font-size:.66rem;color:var(--muted);font-family:var(--inter);text-transform:uppercase;letter-spacing:.1em}
+.hw .tc-shot{background:radial-gradient(circle at 50% 130%,#ff7a18,#3a1550 62%,#160a24)}
+.hw .tc-shot .sub{color:#f6cfa2}
+.xm .tc-shot{background:radial-gradient(circle at 50% 130%,#1f8f4d,#8f1717 66%,#3d0a0a)}
+.xm .tc-shot .sub{color:#ffd9d0}
+@media(max-width:700px){.theme-grid{grid-template-columns:1fr}}
+
 /* ---------- seções ---------- */
 .section{padding:64px 0}
 .section.alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -235,6 +255,38 @@ function render(){
         <iframe src="${c.previewUrl}" loading="lazy" title="Prévia do site"></iframe>
       </div>
       <p class="preview-note">👆 É interativa — role, clique e navegue. Funciona no computador e no celular.</p>
+
+      <div style="margin-top:52px">
+        <div class="sec-head"><span class="eyebrow">Vai além</span><h2>Versões comemorativas</h2><p>Data especial vende mais. A gente veste seu site a cada temporada — Halloween, Natal, Namorados — sem refazer nada. É só ligar e desligar.</p></div>
+        <div class="theme-grid">
+          <div class="theme-card hw">
+            <div class="tc-bar"><i></i><i></i><i></i><span class="u">seusite.com.br</span></div>
+            <div class="tc-shot">
+              <span class="tc-deco" style="top:12px;left:16px">🎃</span>
+              <span class="tc-deco" style="top:16px;right:18px">🦇</span>
+              <span class="tc-deco" style="bottom:14px;left:22px">👻</span>
+              <span class="tc-deco" style="bottom:18px;right:24px">🕸️</span>
+              <h4>NOITE DO TERROR</h4>
+              <p class="sub">Cardápio assombrado · combos monstruosos</p>
+              <div class="tc-chips"><span>🍔 Burger Zumbi</span><span>🎃 Combo Halloween</span></div>
+            </div>
+            <div class="tc-label">🎃 Halloween <span class="tag">Edição especial</span></div>
+          </div>
+          <div class="theme-card xm">
+            <div class="tc-bar"><i></i><i></i><i></i><span class="u">seusite.com.br</span></div>
+            <div class="tc-shot">
+              <span class="tc-deco" style="top:12px;left:16px">🎄</span>
+              <span class="tc-deco" style="top:16px;right:18px">❄️</span>
+              <span class="tc-deco" style="bottom:14px;left:22px">🎅</span>
+              <span class="tc-deco" style="bottom:18px;right:24px">⛄</span>
+              <h4>EDIÇÃO NATALINA</h4>
+              <p class="sub">Ceia especial · combos pra família toda</p>
+              <div class="tc-chips"><span>🍔 Combo Ceia</span><span>🎁 Presente do chef</span></div>
+            </div>
+            <div class="tc-label">🎄 Natal <span class="tag">Edição especial</span></div>
+          </div>
+        </div>
+      </div>
     </div></section>
 
     <section class="section alt"><div class="wrap">
