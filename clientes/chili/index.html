@@ -180,6 +180,36 @@ header{position:sticky;top:0;z-index:60;background:rgba(12,10,9,.9);backdrop-fil
 .total span:last-child{color:var(--flame)}
 .note{font-size:.74rem;color:var(--muted);text-align:center;margin-top:10px}
 
+/* modal de item */
+.ci-det{font-size:.74rem;color:var(--flame);margin:4px 0 2px;line-height:1.4}
+.imodal{position:fixed;inset:0;z-index:110;display:none;align-items:flex-end;justify-content:center}
+.imodal.open{display:flex}
+.imodal .bg{position:absolute;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(3px)}
+.imodal .panel{position:relative;background:var(--bg);border:2px solid var(--chili);border-bottom:none;border-radius:18px 18px 0 0;width:min(560px,100%);max-height:94vh;display:flex;flex-direction:column;animation:up .3s cubic-bezier(.4,0,.2,1)}
+@keyframes up{from{transform:translateY(50px)}to{transform:none}}
+.im-img{height:170px;background:var(--surface2);overflow:hidden;border-radius:16px 16px 0 0}
+.im-img img{width:100%;height:100%;object-fit:cover}
+.im-x{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.6);border:none;color:#fff;font-size:1.2rem;cursor:pointer;z-index:3}
+.im-body{padding:20px;overflow-y:auto}
+.im-body h3{font-family:var(--anton);font-size:1.7rem;margin-bottom:6px}
+.im-body .desc{color:var(--muted);font-size:.9rem;margin-bottom:8px}
+.im-sec{font-family:var(--marker);color:var(--flame);font-size:1.05rem;margin:18px 0 8px}
+.ing-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.ing-row label{flex:1;font-size:.92rem;cursor:pointer}
+.ing-row .px{color:var(--flame);font-weight:700;font-size:.85rem}
+.chk{width:24px;height:24px;border:2px solid var(--line);border-radius:7px;background:var(--surface);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chk.on{background:var(--chili);border-color:var(--chili)}
+.chk svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:3;opacity:0}
+.chk.on svg{opacity:1}
+.im-obs{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;color:var(--ink);font-family:var(--inter);font-size:.9rem;min-height:68px;resize:vertical}
+.im-obs:focus{outline:none;border-color:var(--chili)}
+.im-foot{padding:14px 20px;border-top:1px solid var(--line);display:flex;gap:12px;align-items:center;background:var(--bg)}
+.im-qty{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:9px 12px}
+.im-qty button{background:none;border:none;color:var(--ink);font-size:1.3rem;cursor:pointer;width:22px;line-height:1}
+.im-qty span{font-weight:700;min-width:20px;text-align:center}
+.im-add{flex:1;background:var(--chili);border:none;color:#fff;padding:15px;border-radius:12px;font-family:var(--inter);font-weight:700;font-size:.95rem;cursor:pointer;display:flex;justify-content:center;gap:8px}
+.im-add:hover{background:var(--chili-2)}
+
 footer{background:var(--surface);border-top:1px solid var(--line);padding:40px 0 26px;text-align:center}
 footer .brand{justify-content:center;margin:0 0 14px}
 footer p{color:var(--muted);font-size:.85rem}
@@ -358,6 +388,26 @@ footer p{color:var(--muted);font-size:.85rem}
   </div>
 </aside>
 
+<div class="imodal" id="imodal">
+  <div class="bg" onclick="closeItem()"></div>
+  <div class="panel">
+    <div class="im-img" id="imImgWrap"></div>
+    <button class="im-x" onclick="closeItem()">✕</button>
+    <div class="im-body">
+      <h3 id="imName"></h3>
+      <p class="desc" id="imDesc"></p>
+      <div id="imIng"></div>
+      <div id="imExtras"></div>
+      <div class="im-sec">Alguma observação?</div>
+      <textarea class="im-obs" id="imObs" placeholder="Ex: ponto da carne, capricha no molho, sem cebola..."></textarea>
+    </div>
+    <div class="im-foot">
+      <div class="im-qty"><button onclick="imQty(-1)">−</button><span id="imQtyN">1</span><button onclick="imQty(1)">+</button></div>
+      <button class="im-add" onclick="confirmItem()">Adicionar <span id="imAddPrice"></span></button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -398,7 +448,23 @@ const CATS=[['smash','Smash'],['brasa','Brasa'],['porcoes','Porções'],['bebida
 const todos=()=>[...Object.values(M).flat(),PROMO];
 const brl=v=>'R$ '+v.toFixed(2).replace('.',',');
 
-let cat='smash', cart={};
+// ingredientes por lanche (desmarcar = tirar) e adicionais
+const ING={
+  sb:['Pão de batata','Bife smash 120g','Queijo mussarela','Tomate','Alface','Cebola roxa','Molho da casa'],
+  sbc:['Pão de batata','Bife smash 120g','Bacon','Queijo mussarela','Tomate','Alface','Cebola roxa','Molho da casa'],
+  sc:['Pão de batata','Duplo smash','Cheddar','Molho Chili (picante)','Cebola','Molho da casa'],
+  sj:['Pão de batata','Bife smash','Queijo mussarela','Molho da casa'],
+  ec:['Pão brioche','Blend na brasa','Queijo','Cebola caramelizada','Molho especial'],
+  pb:['Pão','Pastrami defumado','Queijo derretido','Picles','Molho da casa'],
+  ch:['Pão','Carne na brasa','Queijo','Bacon','Molho da casa'],
+  ce:['Pão','Carne na brasa','Queijo derretido','Molho defumado'],
+  me:['Pão','Carne','Queijo derretido (dobro)','Molho da casa'],
+  bc:['2 pães','8 bifes smash 100g','8 mussarelas','4 ovos','Bacon','Maionese da casa','Alface','Tomate']
+};
+const EXTRAS=[{n:'Bacon',p:6},{n:'Ovo',p:4},{n:'Queijo extra',p:5},{n:'Cheddar cremoso',p:6},{n:'Cebola caramelizada',p:5}];
+
+let cat='smash', cart=[];
+let cur=null;
 
 document.getElementById('tabs').innerHTML=CATS.map(([k,l])=>
   `<button class="tab ${k===cat?'on':''}" onclick="setCat('${k}',this)">${l}</button>`).join('');
@@ -421,25 +487,68 @@ function renderGrid(){
 }
 renderGrid();
 
+// abre o modal de detalhes do item
 function add(id){
   const it=todos().find(x=>x.id===id); if(!it)return;
-  cart[id]=cart[id]||{...it,q:0}; cart[id].q++;
-  paint(); toast(it.n+' adicionado!');
+  cur={it,remove:new Set(),extras:new Set(),qty:1};
+  const ings=ING[id]||[], hasC=ings.length>0;
+  document.getElementById('imImgWrap').innerHTML = it.img?`<img src="${U}${it.img}" alt="">`:'<div class="noimg" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--anton);font-size:1.6rem;color:var(--muted)">'+it.n+'</div>';
+  document.getElementById('imName').textContent=it.n;
+  document.getElementById('imDesc').textContent=it.d||'';
+  document.getElementById('imIng').innerHTML = hasC ? '<div class="im-sec">Ingredientes <small style="font-family:var(--inter);color:var(--muted);text-transform:none">— desmarque pra tirar</small></div>'+ings.map((g,i)=>rowHTML('ing',i,g)).join('') : '';
+  document.getElementById('imExtras').innerHTML = hasC ? '<div class="im-sec">Turbine 🔥</div>'+EXTRAS.map((e,i)=>rowHTML('ex',i,e.n,e.p)).join('') : '';
+  document.getElementById('imObs').value='';
+  updQty();
+  document.getElementById('imodal').classList.add('open');
+  document.body.style.overflow='hidden';
 }
-function chg(id,d){ if(!cart[id])return; cart[id].q+=d; if(cart[id].q<=0)delete cart[id]; paint(); }
-function total(){ return Object.values(cart).reduce((s,i)=>s+i.p*i.q,0); }
+function rowHTML(t,i,name,price){
+  const on = t==='ing';
+  return `<div class="ing-row" onclick="tgl('${t}',${i})">
+    <div class="chk ${on?'on':''}" id="${t}${i}"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg></div>
+    <label>${name}</label>${price?`<span class="px">+ ${brl(price)}</span>`:''}</div>`;
+}
+function tgl(t,i){
+  const el=document.getElementById(t+i);
+  if(t==='ing'){
+    const nm=(ING[cur.it.id]||[])[i];
+    if(cur.remove.has(nm)){cur.remove.delete(nm);el.classList.add('on');}
+    else{cur.remove.add(nm);el.classList.remove('on');}
+  }else{
+    if(cur.extras.has(i)){cur.extras.delete(i);el.classList.remove('on');}
+    else{cur.extras.add(i);el.classList.add('on');}
+    updQty();
+  }
+}
+function unit(){let p=cur.it.p;cur.extras.forEach(i=>p+=EXTRAS[i].p);return p;}
+function imQty(d){cur.qty=Math.max(1,cur.qty+d);updQty();}
+function updQty(){document.getElementById('imQtyN').textContent=cur.qty;document.getElementById('imAddPrice').textContent=brl(unit()*cur.qty);}
+function closeItem(){document.getElementById('imodal').classList.remove('open');document.body.style.overflow='';}
+function confirmItem(){
+  cart.push({id:cur.it.id,n:cur.it.n,img:cur.it.img,remove:[...cur.remove],
+    extras:[...cur.extras].map(i=>({n:EXTRAS[i].n,p:EXTRAS[i].p})),
+    obs:document.getElementById('imObs').value.trim(),qty:cur.qty,unit:unit()});
+  closeItem();paint();toast(cur.it.n+' no carrinho! 🍔');
+}
+
+function chg(idx,d){ if(!cart[idx])return; cart[idx].qty+=d; if(cart[idx].qty<=0)cart.splice(idx,1); paint(); }
+function total(){ return cart.reduce((s,l)=>s+l.unit*l.qty,0); }
 
 function paint(){
-  const its=Object.values(cart), n=its.reduce((s,i)=>s+i.q,0);
+  const n=cart.reduce((s,l)=>s+l.qty,0);
   document.getElementById('cc').textContent=n;
   document.getElementById('tt').textContent=brl(total());
-  document.getElementById('cartBody').innerHTML = its.length? its.map(i=>`
-    <div class="ci">
-      ${i.img?`<img src="${U}${i.img}" alt="">`:'<div class="ph"></div>'}
-      <div class="ci-info"><b>${i.n}</b><span>${brl(i.p*i.q)}</span>
-        <div class="qty"><button onclick="chg('${i.id}',-1)">−</button><span>${i.q}</span><button onclick="chg('${i.id}',1)">+</button></div>
-      </div>
-    </div>`).join('')
+  document.getElementById('cartBody').innerHTML = cart.length? cart.map((l,idx)=>{
+    const det=[];
+    if(l.remove.length)det.push('sem '+l.remove.join(', '));
+    l.extras.forEach(e=>det.push('+ '+e.n));
+    if(l.obs)det.push('obs: '+l.obs);
+    return `<div class="ci">
+      ${l.img?`<img src="${U}${l.img}" alt="">`:'<div class="ph"></div>'}
+      <div class="ci-info"><b>${l.n}</b><span>${brl(l.unit*l.qty)}</span>
+        ${det.length?`<div class="ci-det">${det.join(' · ')}</div>`:''}
+        <div class="qty"><button onclick="chg(${idx},-1)">−</button><span>${l.qty}</span><button onclick="chg(${idx},1)">+</button></div>
+      </div></div>`;}).join('')
     : `<div class="empty"><svg viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M6 6L5 3H2"/></svg><p>Seu carrinho está vazio</p><p style="font-size:.85rem;margin-top:6px">Escolha seu lanche no cardápio 🍔</p></div>`;
 }
 paint();
@@ -456,14 +565,18 @@ function openCart(){document.getElementById('cart').classList.add('open');docume
 function closeCart(){document.getElementById('cart').classList.remove('open');document.getElementById('ov').classList.remove('open');document.body.style.overflow='';}
 
 function enviar(){
-  const its=Object.values(cart);
-  if(!its.length){toast('Adicione algo ao carrinho 🍔');return;}
+  if(!cart.length){toast('Adicione algo ao carrinho 🍔');return;}
   const nome=document.getElementById('fNome').value.trim();
   const end=document.getElementById('fEnd').value.trim();
   if(!nome){toast('Escreva seu nome');return;}
   if(modo==='entrega'&&!end){toast('Escreva o endereço');return;}
   let m='*PEDIDO — CHILI BURGUER*\n\n';
-  its.forEach(i=>{m+=`${i.q}x ${i.n} — ${brl(i.p*i.q)}\n`;});
+  cart.forEach(l=>{
+    m+=`${l.qty}x ${l.n} — ${brl(l.unit*l.qty)}\n`;
+    if(l.remove.length)m+=`   ↳ sem: ${l.remove.join(', ')}\n`;
+    if(l.extras.length)m+=`   ↳ add: ${l.extras.map(e=>e.n).join(', ')}\n`;
+    if(l.obs)m+=`   ↳ obs: ${l.obs}\n`;
+  });
   m+=`\n*Total: ${brl(total())}*\n\n`;
   m+=`Nome: ${nome}\n`;
   m+= modo==='entrega' ? `Entrega: ${end}\n` : `Retirada no local\n`;
