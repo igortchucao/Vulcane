@@ -8,6 +8,8 @@ Disallow: /prototipo.html
 Disallow: /prototipo/
 Disallow: /precos.html
 Disallow: /precos/
+Disallow: /insta.html
+Disallow: /nome.html
 Disallow: /clientes/
 Disallow: /marca/
 

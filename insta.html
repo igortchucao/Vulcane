@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Kit Instagram · Vulcane</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M11 6 L31 6 L50 50 L72 6 L86 6 L56 66 L44 66 Z' fill='%23ff5a1f'/%3E%3Ccircle cx='50' cy='84' r='10' fill='%23ff5a1f'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0a0f;--bg2:#14121a;--card:#1c1922;--line:#2a2632;--ink:#f4f1ec;--muted:#9a94a3;
+--ember:#ff5a1f;--ember2:#ff7d3c;--gold:#ffc24d;--sg:'Space Grotesk',sans-serif;--i:'Inter',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#08070b;color:var(--ink);font-family:var(--i);line-height:1.55}
+.wrap{max-width:1000px;margin:0 auto;padding:40px 20px}
+h1,h2,.sg{font-family:var(--sg)}
+.eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ember);font-weight:600;font-family:var(--sg)}
+.top{text-align:center;margin-bottom:36px}
+.top h1{font-size:2rem;font-weight:700;margin:10px 0 8px}
+.top p{color:var(--muted);max-width:560px;margin:0 auto;font-size:.95rem}
+.block{margin:44px 0}
+.block>h2{font-size:1.35rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.block>h2 .n{width:28px;height:28px;border-radius:8px;background:var(--ember);color:#160a04;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+.hint{color:var(--muted);font-size:.85rem;margin-bottom:18px}
+.copybox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;position:relative}
+.copybox .lb{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ember);margin-bottom:6px;font-family:var(--sg)}
+.copybox p{white-space:pre-wrap;font-size:.95rem}
+.opts{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.opts span{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:.85rem;font-family:var(--sg)}
+.opts span.rec{border-color:var(--ember);color:var(--ember)}
+
+/* foto de perfil */
+.pfp-row{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.pfp{width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#1c1922,#0b0a0f);display:flex;align-items:center;justify-content:center;border:1px solid var(--line);box-shadow:0 0 60px -20px var(--ember)}
+.pfp svg{width:96px;filter:drop-shadow(0 0 22px rgba(255,90,31,.5))}
+.pfp.alt{background:var(--ember)}
+.pfp.alt svg path,.pfp.alt svg circle{fill:#160a04}
+
+/* destaques */
+.hl-row{display:flex;gap:22px;flex-wrap:wrap}
+.hl{text-align:center}
+.hl .c{width:88px;height:88px;border-radius:50%;background:var(--bg2);border:2px solid var(--ember);display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.hl .c svg{width:34px;height:34px;stroke:var(--ember);fill:none;stroke-width:1.6}
+.hl b{font-size:.82rem;font-weight:600}
+
+/* feed de posts */
+.feed{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.post{aspect-ratio:1;border-radius:10px;overflow:hidden;position:relative;background:var(--bg);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;padding:26px 22px;text-align:center}
+.post .cap{position:absolute;top:10px;left:12px;font-size:.6rem;color:var(--muted);font-family:var(--sg);letter-spacing:.1em;z-index:3}
+.post .glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 118%,rgba(255,90,31,.28),transparent 60%);z-index:0}
+.post *{position:relative;z-index:2}
+.post .lg{display:flex;align-items:center;justify-content:center;gap:2px;font-family:var(--sg);font-weight:700;font-size:1.5rem;margin-bottom:8px}
+.post .lg svg{height:1em;width:.8em;margin-right:-.02em}
+.post .lg .p{color:var(--ember)}
+.post h3{font-family:var(--sg);font-weight:700;font-size:1.35rem;line-height:1.08;margin-bottom:8px}
+.post h3 em{font-style:normal;color:var(--ember)}
+.post p{font-size:.8rem;color:var(--muted)}
+.post .big{font-family:var(--sg);font-weight:700;font-size:2.6rem;color:var(--ember);line-height:1}
+.post ul{list-style:none;text-align:left;display:inline-flex;flex-direction:column;gap:6px;margin-top:6px}
+.post li{font-size:.78rem;display:flex;gap:7px}
+.post li::before{content:"🔥";font-size:.7rem}
+.post.solid{background:var(--ember)}
+.post.solid *{color:#160a04}
+.post.solid .glow{display:none}
+.post .tagm{display:inline-block;background:rgba(255,90,31,.16);border:1px solid var(--ember);color:var(--ember);font-family:var(--sg);font-weight:600;font-size:.66rem;padding:4px 10px;border-radius:100px;margin-bottom:10px}
+
+.tip{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ember);border-radius:10px;padding:16px 18px;color:var(--muted);font-size:.88rem;margin-top:14px}
+.tip b{color:var(--ink)}
+@media(max-width:640px){.feed{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="mark" viewBox="0 0 100 100">
+  <path d="M11 6 L31 6 L50 50 L72 6 L86 6 L56 66 L44 66 Z" fill="var(--m1,#ff5a1f)"/>
+  <circle cx="50" cy="84" r="10" fill="var(--m1,#ff5a1f)"/>
+</symbol></svg>
+
+<div class="wrap">
+  <div class="top">
+    <span class="eyebrow">Kit de lançamento</span>
+    <h1>Instagram da Vulcane</h1>
+    <p>Tudo pronto pra você subir. Copie os textos e tire print de cada arte (no celular ou zoom no PC) pra postar.</p>
+  </div>
+
+  <div class="block">
+    <h2><span class="n">1</span> Perfil</h2>
+    <p class="hint">Nome de usuário, nome de exibição e bio.</p>
+    <div class="copybox">
+      <div class="lb">@ Nome de usuário (escolha um)</div>
+      <div class="opts"><span class="rec">vulcane.sites</span><span>vulcane.digital</span><span>agenciavulcane</span><span>vulcane.oficial</span></div>
+    </div>
+    <div class="copybox"><div class="lb">Nome de exibição</div><p>Vulcane · Sites que vendem</p></div>
+    <div class="copybox"><div class="lb">Bio</div><p>🔥 A forja digital
+Sites modernos que transformam visita em cliente.
+📍 Divinópolis e região
+👇 Peça sua prévia grátis</p></div>
+    <div class="copybox"><div class="lb">Link</div><p>https://dotvulcan.onrender.com</p></div>
+  </div>
+
+  <div class="block">
+    <h2><span class="n">2</span> Foto de perfil</h2>
+    <p class="hint">Tire print de uma das duas (o Instagram corta em círculo). A escura é mais elegante; a laranja chama mais atenção no feed dos outros.</p>
+    <div class="pfp-row">
+      <div class="pfp"><svg viewBox="0 0 100 100"><use href="#mark"/></svg></div>
+      <div class="pfp alt"><svg viewBox="0 0 100 100"><use href="#mark"/></svg></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2><span class="n">3</span> Destaques (capas)</h2>
+    <p class="hint">Círculos fixos abaixo da bio. Print de cada um.</p>
+    <div class="hl-row">
+      <div class="hl"><div class="c"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 18l-5.9 3 1.2-6.5L2.5 9.9 9 9z"/></svg></div><b>Sobre</b></div>
+      <div class="hl"><div class="c"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 15l5-4 4 3 3-2 6 5"/></svg></div><b>Trabalhos</b></div>
+      <div class="hl"><div class="c"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V7z"/></svg></div><b>Como funciona</b></div>
+      <div class="hl"><div class="c"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><b>Contato</b></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2><span class="n">4</span> Primeiros 6 posts</h2>
+    <p class="hint">O feed de lançamento. Poste de baixo pra cima (o 1 é o mais antigo). Tire print de cada arte.</p>
+    <div class="feed">
+
+      <div class="post">
+        <span class="cap">post 1 · apresentação</span><div class="glow"></div>
+        <div class="lg"><svg viewBox="0 0 100 100"><use href="#mark"/></svg><span>ulcane</span><span class="p">.</span></div>
+        <p style="font-family:var(--sg);color:var(--ember);letter-spacing:.1em;text-transform:uppercase;font-size:.72rem">A forja digital</p>
+        <p style="margin-top:10px;color:var(--ink);font-size:.9rem">Chegou pra forjar a presença digital dos negócios de Divinópolis.</p>
+      </div>
+
+      <div class="post">
+        <span class="cap">post 2 · o gancho</span><div class="glow"></div>
+        <h3>Seu site tá bonito.<br>Mas ele <em>vende?</em></h3>
+        <p>A gente faz ele vender.</p>
+      </div>
+
+      <div class="post">
+        <span class="cap">post 3 · dado</span><div class="glow"></div>
+        <div class="big">70%</div>
+        <p style="margin-top:10px;color:var(--ink);font-size:.9rem">das compras acontecem no <b>celular</b>. Seu site tá pronto pra elas?</p>
+      </div>
+
+      <div class="post">
+        <span class="cap">post 4 · diferencial</span><div class="glow"></div>
+        <h3 style="font-size:1.15rem">A gente não faz sites.<br>A gente <em>forja.</em></h3>
+        <ul><li>Feito pro celular</li><li>Pensado pra converter</li><li>Rápido de verdade</li></ul>
+      </div>
+
+      <div class="post solid">
+        <span class="cap" style="color:#160a04">post 5 · oferta</span>
+        <span class="tagm" style="background:rgba(0,0,0,.12);border-color:#160a04;color:#160a04">grátis</span>
+        <h3>Ganhe uma prévia<br>do seu site novo</h3>
+        <p style="color:#160a04cc">Sem compromisso. A gente monta, você vê.</p>
+      </div>
+
+      <div class="post">
+        <span class="cap">post 6 · chamada</span><div class="glow"></div>
+        <h3 style="font-size:1.2rem">Bora forjar<br>o <em>seu?</em> 🔨</h3>
+        <p style="margin-top:8px">Chama no direct ou no WhatsApp.<br>Feito em Divinópolis 🔥</p>
+      </div>
+
+    </div>
+
+    <div class="tip"><b>Legendas:</b> capriche no texto de cada post (a arte chama, a legenda converte). Quer que eu escreva as 6 legendas com hashtags locais tipo <b>#divinopolis #divinopolismg #sitesdivinopolis</b>? É só pedir.</div>
+  </div>
+
+  <div class="block">
+    <h2><span class="n">5</span> Como usar</h2>
+    <div class="tip" style="border-left-color:var(--ember)">
+      1. Cria a conta com um dos @ sugeridos<br>
+      2. Print da foto de perfil e sobe<br>
+      3. Cola o nome, a bio e o link<br>
+      4. Print de cada post e publica (do 1 ao 6)<br>
+      5. Cria os 4 destaques com as capas<br>
+      <b>Pronto — perfil profissional no ar pra você mandar as abordagens.</b>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
