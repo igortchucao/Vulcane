@@ -1,4 +1,4 @@
-# dotVulcan · A forja digital
+# Vulcane · A forja digital
 
 Site institucional e sistema de propostas. 100% estático (HTML/CSS/JS) — sem build, sem dependências.
 
@@ -21,8 +21,8 @@ Site institucional e sistema de propostas. 100% estático (HTML/CSS/JS) — sem 
 
 ## Como o cliente acessa
 
-1. Entra em `dotvulcan.com.br` e digita o código na barra do topo, **ou**
-2. Recebe o link direto: `dotvulcan.com.br/prototipo.html?cliente=CODIGO`
+1. Entra em `vulcane.com.br` e digita o código na barra do topo, **ou**
+2. Recebe o link direto: `vulcane.com.br/prototipo.html?cliente=CODIGO`
 
 Código inválido → redireciona para a página de vendas.
 
