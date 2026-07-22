@@ -91,6 +91,31 @@ header{border-bottom:1px solid var(--line);background:rgba(13,15,20,.82);backdro
 .xm .tc-shot .sub{color:#ffd9d0}
 @media(max-width:700px){.theme-grid{grid-template-columns:1fr}}
 
+/* sistema de gestão + status */
+.sys-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;margin-top:6px}
+.sys-panel{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.sp-top{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line);font-family:var(--sg);font-weight:600;font-size:.88rem}
+.sp-top .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;margin-left:auto;box-shadow:0 0 0 3px rgba(74,222,128,.2)}
+.sp-order{padding:15px 18px;border-bottom:1px solid var(--line)}
+.spo-head{display:flex;justify-content:space-between;font-weight:600;font-size:.92rem;margin-bottom:4px}
+.spo-head .v{color:var(--accent)}
+.spo-items{color:var(--muted);font-size:.8rem;margin-bottom:11px}
+.steps{display:flex;gap:5px;margin-bottom:12px}
+.step{flex:1;text-align:center;font-size:.6rem;padding:6px 3px;border-radius:6px;background:var(--bg-2);color:var(--muted);border:1px solid var(--line)}
+.step.done{background:rgba(255,90,31,.14);color:var(--accent);border-color:rgba(255,90,31,.5)}
+.step.now{background:var(--accent);color:#160a04;border-color:var(--accent);font-weight:700}
+.spo-btn{background:var(--accent);border:none;color:#160a04;padding:9px 15px;border-radius:8px;font-family:var(--sg);font-weight:600;font-size:.78rem}
+.phone{max-width:265px;margin:0 auto;border:9px solid #1b1b1f;border-radius:34px;overflow:hidden;box-shadow:0 24px 55px -22px rgba(0,0,0,.75);background:#0b141a}
+.ph-top{background:#202c33;display:flex;align-items:center;gap:9px;padding:11px 13px}
+.ph-top .av{width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--sg);font-weight:700;font-size:.9rem;color:#160a04}
+.ph-top b{font-size:.84rem;color:#e9edef}
+.ph-top small{display:block;font-size:.64rem;color:#8696a0}
+.ph-chat{padding:16px 12px;display:flex;flex-direction:column;gap:9px;min-height:330px;background:#0b141a}
+.bub{max-width:88%;background:#202c33;color:#e9edef;padding:9px 12px;border-radius:10px;border-top-left-radius:2px;font-size:.79rem;line-height:1.45;align-self:flex-start}
+.bub b{color:#fff}
+.bub time{display:block;font-size:.56rem;color:#8696a0;text-align:right;margin-top:3px}
+@media(max-width:700px){.sys-grid{grid-template-columns:1fr}}
+
 /* ---------- seções ---------- */
 .section{padding:64px 0}
 .section.alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -185,6 +210,7 @@ const CLIENTES = {
     cliente: "Chili Burguer",
     contato: "time da Chili",
     previewUrl: "/clientes/chili/",
+    sistema: true,
     tag: "Prévia preparada especialmente para a Chili Burguer",
     titulo: 'Sua marca merece <span>endereço próprio</span>',
     intro: "Vocês construíram a hamburgueria mais querida de Divinópolis — mas o endereço digital é de outra empresa. Fiz uma prévia de como seria o site de vocês, com o cardápio real e pedido direto no WhatsApp.",
@@ -230,6 +256,37 @@ function render(){
   const app = document.getElementById('app');
   if(!c){ location.replace('index.html'); return; }
   const wa = waLink(c.whats, c.whatsMsg);
+  const sistema = c.sistema ? `
+    <section class="section"><div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Muito além de um cardápio</span><h2>Painel de gestão + status no WhatsApp</h2><p>Vocês controlam os pedidos num painel simples, e o cliente acompanha tudo pelo zap — sem depender de app de terceiros.</p></div>
+      <div class="sys-grid">
+        <div class="sys-panel">
+          <div class="sp-top">🍔 Painel Chili · pedidos ao vivo <span class="dot"></span></div>
+          <div class="sp-order">
+            <div class="spo-head"><span>#128 · João</span><span class="v">R$ 84,00</span></div>
+            <div class="spo-items">2x Smash Chili (sem cebola, + bacon) · 1x Coca lata</div>
+            <div class="steps"><div class="step done">Recebido</div><div class="step done">Aceito</div><div class="step now">Em produção</div><div class="step">Saiu</div></div>
+            <button class="spo-btn">Avançar → Saiu pra entrega</button>
+          </div>
+          <div class="sp-order">
+            <div class="spo-head"><span>#129 · Marina</span><span class="v">R$ 42,00</span></div>
+            <div class="spo-items">1x El Cabron · 1x Batata palito</div>
+            <div class="steps"><div class="step done">Recebido</div><div class="step now">Aceito</div><div class="step">Em produção</div><div class="step">Saiu</div></div>
+            <button class="spo-btn">Avançar → Em produção</button>
+          </div>
+        </div>
+        <div class="phone">
+          <div class="ph-top"><div class="av">C</div><div><b>Chili Burguer</b><small>online</small></div></div>
+          <div class="ph-chat">
+            <div class="bub"><b>✅ Pedido recebido!</b> Já confirmamos com a cozinha 🍔<time>19:42</time></div>
+            <div class="bub"><b>👨‍🍳 Pedido aceito</b> e indo pra chapa!<time>19:43</time></div>
+            <div class="bub"><b>🔥 Em produção</b> — seu lanche está sendo preparado<time>19:48</time></div>
+            <div class="bub"><b>🛵 Saiu pra entrega!</b> Chega em ~15 min. Bom apetite! 🤘<time>20:05</time></div>
+          </div>
+        </div>
+      </div>
+      <p class="preview-note">💡 Recurso da evolução do projeto — o pedido continua caindo no WhatsApp como já funciona hoje.</p>
+    </div></section>` : '';
   app.innerHTML = `
     <section class="p-hero"><div class="wrap in">
       <span class="tag">${c.tag}</span>
@@ -288,7 +345,7 @@ function render(){
         </div>
       </div>
     </div></section>
-
+    ${sistema}
     <section class="section alt"><div class="wrap">
       <div class="sec-head"><span class="eyebrow">O que mudou</span><h2>As melhorias que fiz</h2><p>Tudo repensado pra deixar a experiência mais bonita, rápida e vendedora.</p></div>
       <div class="cards">${c.mudancas.map(m=>`<div class="icard"><div class="ic">${svg(m.ic)}</div><div><h3>${m.t}</h3><p>${m.d}</p></div></div>`).join('')}</div>
