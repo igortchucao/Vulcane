@@ -5,7 +5,9 @@ User-agent: *
 Allow: /$
 Allow: /index.html
 Disallow: /prototipo.html
+Disallow: /prototipo/
 Disallow: /precos.html
+Disallow: /precos/
 Disallow: /clientes/
 Disallow: /marca/
 
