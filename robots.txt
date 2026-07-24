@@ -1,4 +1,4 @@
-# dotVulcan · A forja digital
+# Vulcane · A forja digital
 # A página de vendas deve ser indexada. Todo o resto, não.
 
 User-agent: *
