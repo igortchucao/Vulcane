@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Baixar logo · Vulcane</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0a0f;--card:#14121a;--line:#2a2632;--ink:#f4f1ec;--muted:#9a94a3;--ember:#ff5a1f;
+--sg:'Space Grotesk',sans-serif;--i:'Inter',sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:#08070b;color:var(--ink);font-family:var(--i);line-height:1.55;padding:40px 20px}
+.wrap{max-width:900px;margin:0 auto}
+h1{font-family:var(--sg);font-size:1.9rem;font-weight:700;margin-bottom:6px}
+.sub{color:var(--muted);margin-bottom:34px}
+.eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ember);font-weight:600;font-family:var(--sg)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;margin-bottom:18px}
+.card h2{font-family:var(--sg);font-size:1.15rem;font-weight:700;margin-bottom:4px}
+.card p{color:var(--muted);font-size:.88rem;margin-bottom:16px}
+.prev{background:#0b0a0f;border:1px solid var(--line);border-radius:12px;padding:26px;display:flex;align-items:center;justify-content:center;min-height:150px;margin-bottom:16px}
+.prev.light{background:#f4f1ec}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+button{background:var(--ember);border:none;color:#160a04;padding:11px 18px;border-radius:9px;font-family:var(--sg);font-weight:700;font-size:.84rem;cursor:pointer;transition:.2s}
+button:hover{background:#ff7d3c}
+button.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+button.ghost:hover{border-color:var(--ember);color:var(--ember)}
+.lbl{color:var(--muted);font-size:.8rem;margin-right:4px}
+a.dl{color:var(--ember);font-size:.86rem;text-decoration:underline}
+.tip{background:var(--card);border-left:3px solid var(--ember);border-radius:10px;padding:16px 18px;color:var(--muted);font-size:.87rem;margin-top:8px}
+.tip b{color:var(--ink)}
+.wm{font-family:var(--sg);font-weight:700;font-size:3rem;display:inline-flex;align-items:center;line-height:1}
+.wm svg{height:.92em;width:.78em;margin-right:-.02em}
+.wm .t{color:var(--ink)} .wm .p{color:var(--ember)}
+.prev.light .wm .t{color:#14121a}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">Arquivos da marca</span>
+  <h1>Baixar o logo</h1>
+  <p class="sub">Clique no tamanho que precisar — o arquivo PNG baixa na hora, com fundo transparente.</p>
+
+  <!-- SÍMBOLO -->
+  <div class="card">
+    <h2>1. Símbolo (o V)</h2>
+    <p>Para foto de perfil do Instagram, favicon e ícone de app.</p>
+    <div class="prev">
+      <svg id="sym" viewBox="0 0 100 100" style="height:110px">
+        <path d="M11 6 L31 6 L50 50 L72 6 L86 6 L56 66 L44 66 Z" fill="#ff5a1f"/>
+        <circle cx="50" cy="84" r="10" fill="#ff5a1f"/>
+      </svg>
+    </div>
+    <div class="row">
+      <span class="lbl">PNG transparente:</span>
+      <button onclick="dlSym(512,null)">512px</button>
+      <button onclick="dlSym(1024,null)">1024px</button>
+      <button onclick="dlSym(2048,null)">2048px</button>
+    </div>
+    <div class="row" style="margin-top:9px">
+      <span class="lbl">Com fundo:</span>
+      <button class="ghost" onclick="dlSym(1024,'#0b0a0f')">Fundo escuro</button>
+      <button class="ghost" onclick="dlSym(1024,'#ff5a1f','#160a04')">Fundo laranja</button>
+      <a class="dl" href="logo-simbolo.svg" download>baixar .SVG</a>
+    </div>
+  </div>
+
+  <!-- LOGO COMPLETO -->
+  <div class="card">
+    <h2>2. Logo completo</h2>
+    <p>Para site, propostas, assinatura de e-mail e material impresso.</p>
+    <div class="prev">
+      <span class="wm"><svg viewBox="0 0 100 100"><path d="M11 6 L31 6 L50 50 L72 6 L86 6 L56 66 L44 66 Z" fill="#ff5a1f"/><circle cx="50" cy="84" r="10" fill="#ff5a1f"/></svg><span class="t">ulcane</span><span class="p">.</span></span>
+    </div>
+    <div class="row">
+      <span class="lbl">Versão clara (fundo escuro):</span>
+      <button onclick="dlFull(1200,'#f4f1ec',null)">1200px</button>
+      <button onclick="dlFull(2400,'#f4f1ec',null)">2400px</button>
+    </div>
+    <div class="prev light" style="margin-top:16px">
+      <span class="wm"><svg viewBox="0 0 100 100"><path d="M11 6 L31 6 L50 50 L72 6 L86 6 L56 66 L44 66 Z" fill="#ff5a1f"/><circle cx="50" cy="84" r="10" fill="#ff5a1f"/></svg><span class="t">ulcane</span><span class="p">.</span></span>
+    </div>
+    <div class="row">
+      <span class="lbl">Versão escura (fundo claro):</span>
+      <button onclick="dlFull(1200,'#14121a',null)">1200px</button>
+      <button onclick="dlFull(2400,'#14121a',null)">2400px</button>
+    </div>
+  </div>
+
+  <div class="tip">
+    <b>Onde usar cada um:</b><br>
+    • <b>Instagram / Google Meu Negócio (foto de perfil):</b> símbolo, 1024px, fundo escuro ou laranja<br>
+    • <b>Favicon do site:</b> já está configurado, não precisa<br>
+    • <b>Assinatura de e-mail / propostas:</b> logo completo, versão clara ou escura conforme o fundo<br>
+    • <b>Impresso (cartão, adesivo):</b> use o <b>.SVG</b> ou o PNG 2400px
+  </div>
+</div>
+
+<script>
+const PATH = "M11 6 L31 6 L50 50 L72 6 L86 6 L56 66 L44 66 Z";
+
+function baixar(canvas, nome){
+  canvas.toBlob(b=>{
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(b); a.download=nome; a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+  },'image/png');
+}
+
+// desenha o símbolo (V + faísca) num contexto, escalado a partir do viewBox 100x100
+function drawMark(ctx, x, y, size, cor){
+  ctx.save();
+  ctx.translate(x,y);
+  ctx.scale(size/100, size/100);
+  ctx.fillStyle = cor;
+  ctx.fill(new Path2D(PATH));
+  ctx.beginPath(); ctx.arc(50,84,10,0,Math.PI*2); ctx.fill();
+  ctx.restore();
+}
+
+function dlSym(px, fundo, corLogo){
+  const c=document.createElement('canvas'); c.width=c.height=px;
+  const ctx=c.getContext('2d');
+  if(fundo){ ctx.fillStyle=fundo; ctx.fillRect(0,0,px,px); }
+  const pad = fundo ? px*0.22 : px*0.06;      // com fundo, respira mais (vira ícone)
+  const s = px - pad*2;
+  drawMark(ctx, pad, pad + s*0.03, s, corLogo || '#ff5a1f');
+  baixar(c, `vulcane-simbolo-${px}${fundo?'-fundo':''}.png`);
+}
+
+async function dlFull(px, corTexto){
+  await document.fonts.load('700 100px "Space Grotesk"');
+  await document.fonts.ready;
+  const F = px*0.30;                 // tamanho da fonte
+  const markH = F*0.92, markW = F*0.78;
+  const tmp=document.createElement('canvas').getContext('2d');
+  tmp.font = `700 ${F}px "Space Grotesk", sans-serif`;
+  const wTexto = tmp.measureText('ulcane.').width;
+  const pad = F*0.30;
+  const W = Math.ceil(pad*2 + markW + wTexto);
+  const H = Math.ceil(F*1.55);
+  const c=document.createElement('canvas'); c.width=W; c.height=H;
+  const ctx=c.getContext('2d');
+  ctx.font = `700 ${F}px "Space Grotesk", sans-serif`;
+  ctx.textBaseline='alphabetic';
+  const baseY = H/2 + F*0.36;
+  // símbolo alinhado com a altura das letras
+  drawMark(ctx, pad, baseY - markH, markH, '#ff5a1f');
+  // texto
+  let x = pad + markW - F*0.02;
+  ctx.fillStyle = corTexto;
+  ctx.fillText('ulcane', x, baseY);
+  x += ctx.measureText('ulcane').width;
+  ctx.fillStyle = '#ff5a1f';
+  ctx.fillText('.', x, baseY);
+  baixar(c, `vulcane-logo-${corTexto==='#f4f1ec'?'claro':'escuro'}-${px}.png`);
+}
+</script>
+</body>
+</html>
