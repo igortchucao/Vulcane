@@ -13,4 +13,4 @@ Disallow: /nome.html
 Disallow: /clientes/
 Disallow: /marca/
 
-Sitemap: /sitemap.xml
+Sitemap: https://vulcane.com.br/sitemap.xml
