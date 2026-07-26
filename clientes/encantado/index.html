@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>Encantado Mundo da Criança · Brinquedos e Diversão</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%232f80ed'/%3E%3Cpath d='M32 28 Q46 22 52 33 Q60 44 46 52 Q34 54 32 42 Z' fill='%23f2c94c'/%3E%3Cpath d='M56 54 Q68 51 71 63 Q68 76 56 71 Q49 62 56 54 Z' fill='%23f2c94c'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%231f5fbf' stroke-width='4'/%3E%3C/svg%3E">
 <script>
 /* Guarda de moldura — prévia só dentro da proposta Vulcane. ?dv=1 libera. */
 (function(){var l=['localhost','127.0.0.1',''].indexOf(location.hostname)!==-1,k=/[?&]dv=/.test(location.search);
@@ -37,7 +38,8 @@ h1,h2,h3,.fred{font-family:var(--fred);font-weight:600;line-height:1.1}
 header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:2px solid var(--line)}
 .nav{display:flex;align-items:center;gap:16px;height:76px}
 .brand{display:flex;align-items:center;gap:12px;margin-right:auto}
-.brand .mark{width:50px;height:50px;border-radius:16px;background:linear-gradient(135deg,var(--amarelo),var(--vermelho));display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 6px 14px -6px rgba(235,87,87,.6)}
+.brand .mark{width:54px;height:54px;display:flex;align-items:center;justify-content:center}
+.brand .mark svg{width:100%;height:100%}
 .brand b{font-family:var(--fred);font-size:1.2rem;line-height:1;color:var(--azul-esc)}
 .brand small{display:block;font-family:var(--nun);font-weight:700;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .menu{display:flex;gap:26px}
@@ -129,7 +131,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdro
 
 footer{background:#241f33;color:#c9c2dd;padding:48px 0 28px;text-align:center}
 .foot-brand{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:14px}
-.foot-brand .mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--amarelo),var(--vermelho));display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.foot-brand .mark{width:50px;height:50px;display:flex;align-items:center;justify-content:center}
+.foot-brand .mark svg{width:100%;height:100%}
 .foot-brand b{font-family:var(--fred);font-size:1.2rem;color:#fff}
 footer p{font-weight:600;font-size:.9rem}
 .made{margin-top:16px;font-size:.78rem;color:#6b6383}
@@ -148,12 +151,35 @@ footer p{font-weight:600;font-size:.9rem}
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logomark" viewBox="0 0 100 100">
+    <!-- roda de crianças de mãos dadas -->
+    <g>
+      <g transform="rotate(0 50 50)"><circle cx="50" cy="9" r="4.4" fill="#f5c197"/><path d="M45.5 21 Q45.5 12.6 50 12.6 Q54.5 12.6 54.5 21 Z" fill="#eb5757"/></g>
+      <g transform="rotate(45 50 50)"><circle cx="50" cy="9" r="4.4" fill="#c98a5e"/><path d="M45.5 21 Q45.5 12.6 50 12.6 Q54.5 12.6 54.5 21 Z" fill="#f2994a"/></g>
+      <g transform="rotate(90 50 50)"><circle cx="50" cy="9" r="4.4" fill="#f5c197"/><path d="M45.5 21 Q45.5 12.6 50 12.6 Q54.5 12.6 54.5 21 Z" fill="#f2c94c"/></g>
+      <g transform="rotate(135 50 50)"><circle cx="50" cy="9" r="4.4" fill="#8a5a3c"/><path d="M45.5 21 Q45.5 12.6 50 12.6 Q54.5 12.6 54.5 21 Z" fill="#27ae60"/></g>
+      <g transform="rotate(180 50 50)"><circle cx="50" cy="9" r="4.4" fill="#f5c197"/><path d="M45.5 21 Q45.5 12.6 50 12.6 Q54.5 12.6 54.5 21 Z" fill="#2f80ed"/></g>
+      <g transform="rotate(225 50 50)"><circle cx="50" cy="9" r="4.4" fill="#c98a5e"/><path d="M45.5 21 Q45.5 12.6 50 12.6 Q54.5 12.6 54.5 21 Z" fill="#9b51e0"/></g>
+      <g transform="rotate(270 50 50)"><circle cx="50" cy="9" r="4.4" fill="#f5c197"/><path d="M45.5 21 Q45.5 12.6 50 12.6 Q54.5 12.6 54.5 21 Z" fill="#ff5da2"/></g>
+      <g transform="rotate(315 50 50)"><circle cx="50" cy="9" r="4.4" fill="#8a5a3c"/><path d="M45.5 21 Q45.5 12.6 50 12.6 Q54.5 12.6 54.5 21 Z" fill="#00bcd4"/></g>
+    </g>
+    <!-- globo -->
+    <circle cx="50" cy="50" r="26" fill="#2f80ed"/>
+    <path d="M37 33 Q46 29 50 36 Q55 43 47 48 Q39 49 37 42 Z" fill="#f2c94c"/>
+    <path d="M53 51 Q61 49 63 57 Q61 66 53 63 Q49 57 53 51 Z" fill="#f2c94c"/>
+    <path d="M50 24 A26 26 0 0 1 66 32" fill="none" stroke="#eafff" stroke-width="0" opacity="0"/>
+    <ellipse cx="43" cy="40" rx="6" ry="9" fill="#5aa0f5" opacity=".5"/>
+    <circle cx="50" cy="50" r="26" fill="none" stroke="#1f5fbf" stroke-width="2.4"/>
+  </symbol>
+</svg>
+
 <div class="top">🎉 Diversão garantida pra festas, escolas, buffets e eventos!</div>
 
 <header>
   <div class="wrap nav">
     <a class="brand" href="#">
-      <span class="mark">🎪</span>
+      <span class="mark"><svg viewBox="0 0 100 100"><use href="#logomark"/></svg></span>
       <span><b>Encantado</b><small>Mundo da Criança</small></span>
     </a>
     <nav class="menu">
@@ -321,7 +347,7 @@ footer p{font-weight:600;font-size:.9rem}
 </section>
 
 <footer>
-  <div class="foot-brand"><span class="mark">🎪</span><b>Encantado Mundo da Criança</b></div>
+  <div class="foot-brand"><span class="mark"><svg viewBox="0 0 100 100"><use href="#logomark"/></svg></span><b>Encantado Mundo da Criança</b></div>
   <p>Infláveis · Playgrounds · Camas elásticas · Sob medida<br>Fabricação própria em Divinópolis / MG</p>
   <p class="made">Protótipo forjado por <b>Vulcane.</b> — demonstração, não é o site oficial</p>
 </footer>
