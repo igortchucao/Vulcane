@@ -1,0 +1,9 @@
+# Motor de Leads — ferramenta interna, NÃO publicar (dados de empresas = LGPD)
+motor/leads.json
+motor/painel.html
+motor/node_modules/
+
+# Bot do WhatsApp — NUNCA commitar (sessão = login do seu WhatsApp!)
+motor/.wwebjs_auth/
+motor/.wwebjs_cache/
+motor/.estado-bot.json

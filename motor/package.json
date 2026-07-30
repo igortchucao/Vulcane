@@ -1,0 +1,20 @@
+{
+  "name": "vulcane-motor",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Motor de leads + bot de respostas da Vulcane",
+  "scripts": {
+    "start": "node servidor.mjs",
+    "central": "node servidor.mjs",
+    "leads": "node rodar.mjs",
+    "bot": "node bot.mjs"
+  },
+  "dependencies": {
+    "whatsapp-web.js": "^1.26.0",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "allowScripts": {
+    "puppeteer@24.38.0": true
+  }
+}

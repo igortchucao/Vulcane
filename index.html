@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Criação de Sites em Divinópolis MG | Vulcane</title>
-<meta name="description" content="Criação e modernização de sites em Divinópolis e região. Sites rápidos, feitos para celular e pensados para vender mais. Peça uma prévia grátis do seu site.">
+<title>Vulcane | Sites e Sistemas sob medida em Divinópolis MG</title>
+<meta name="description" content="Empresa de tecnologia em Divinópolis. Criação de sites profissionais e desenvolvimento de sistemas sob medida para restaurantes, academias, controle de estoque e outras demandas.">
 <link rel="canonical" href="https://vulcane.com.br/">
 <meta name="author" content="Vulcane">
 <meta name="geo.region" content="BR-MG">
@@ -15,11 +15,11 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Vulcane">
 <meta property="og:url" content="https://vulcane.com.br/">
-<meta property="og:title" content="Criação de Sites em Divinópolis MG | Vulcane">
-<meta property="og:description" content="Sites modernos que transformam visitante em cliente. Feitos para celular, onde 7 de cada 10 pessoas compram. Peça sua prévia grátis.">
+<meta property="og:title" content="Vulcane | Sites e Sistemas sob medida">
+<meta property="og:description" content="Empresa de tecnologia em Divinópolis. Sites profissionais e sistemas sob medida para restaurantes, academias, controle de estoque e outras demandas.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Criação de Sites em Divinópolis MG | Vulcane">
-<meta name="twitter:description" content="Sites modernos que vendem mais. Divinópolis e região.">
+<meta name="twitter:title" content="Vulcane | Sites e Sistemas sob medida">
+<meta name="twitter:description" content="Sites e sistemas sob medida. Divinópolis e região.">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M11 6 L31 6 L50 50 L72 6 L86 6 L56 66 L44 66 Z' fill='%23ff5a1f'/%3E%3Ccircle cx='50' cy='84' r='10' fill='%23ff5a1f'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,6 +74,11 @@ header{position:sticky;top:0;z-index:50;background:rgba(13,15,20,.82);backdrop-f
 .btn.ghost:hover{border-color:var(--accent);color:var(--accent);background:transparent}
 .btn svg{width:19px;height:19px;fill:currentColor}
 .nav .btn{padding:11px 18px;font-size:.85rem}
+.nav-menu{display:flex;gap:26px;margin-left:auto;margin-right:22px}
+.nav-menu a{font-family:var(--sg);font-weight:500;font-size:.92rem;color:var(--muted);transition:.2s}
+.nav-menu a:hover{color:var(--accent)}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.nav-menu{display:none}.cards3{grid-template-columns:1fr}}
 
 /* hero */
 .hero{position:relative;padding:84px 0 70px;overflow:hidden}
@@ -199,7 +204,7 @@ footer b{color:var(--ink);font-family:var(--sg)}
   "@type": "ProfessionalService",
   "name": "Vulcane",
   "alternateName": "Vulcane - A forja digital",
-  "description": "Criação e modernização de sites para empresas em Divinópolis e região. Sites rápidos, otimizados para celular e focados em conversão.",
+  "description": "Empresa de tecnologia em Divinópolis: criação de sites e desenvolvimento de sistemas sob medida para restaurantes, academias, controle de estoque e outras demandas.",
   "url": "https://vulcane.com.br/",
   "telephone": "+55-37-99865-2824",
   "priceRange": "R$$",
@@ -214,7 +219,7 @@ footer b{color:var(--ink);font-family:var(--sg)}
     { "@type": "City", "name": "Divinópolis" },
     { "@type": "State", "name": "Minas Gerais" }
   ],
-  "knowsAbout": ["Criação de sites", "Modernização de sites", "Landing page de conversão", "Sites para restaurantes", "Sites para lojas"],
+  "knowsAbout": ["Criação de sites", "Modernização de sites", "Desenvolvimento de sistemas", "Sistema para restaurante", "Sistema para academia", "Controle de estoque", "Landing page de conversão"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Serviços",
@@ -252,54 +257,78 @@ footer b{color:var(--ink);font-family:var(--sg)}
     <div class="logo">
       <svg class="logo-v" viewBox="0 0 100 100"><use href="#mark"/></svg><span>ulcane<span class="p">.</span></span>
     </div>
-    <a class="btn" href="https://wa.me/5537998652824?text=Oi%20Igor!%20Vi%20sua%20p%C3%A1gina%20e%20quero%20saber%20mais%20sobre%20modernizar%20meu%20site.">Falar no WhatsApp</a>
+    <nav class="nav-menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#sistemas">Sistemas</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn" href="https://wa.me/5537998652824?text=Oi!%20Vim%20pelo%20site%20da%20Vulcane%20e%20quero%20conversar.">Falar no WhatsApp</a>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap hero-in">
-    <span class="tagline"><span class="dot"></span> A forja digital · Divinópolis e região</span>
-    <h1>Seu site tá bonito.<br>Mas ele <span class="hl">vende</span> o quanto poderia?</h1>
-    <p class="lead">Na Vulcane a gente não “faz” sites — a gente <strong style="color:var(--ink)">forja</strong>. Peça por peça, no fogo e no detalhe, pra transformar visitante em cliente. Focado no celular, onde 7 de cada 10 pessoas compram.</p>
+    <span class="tagline"><span class="dot"></span> Tecnologia sob medida · Divinópolis e região</span>
+    <h1>Sites e <span class="hl">sistemas</span><br>que fazem seu negócio crescer</h1>
+    <p class="lead">A Vulcane cria sites profissionais e desenvolve sistemas personalizados para empresas. Do site que vende ao sistema que organiza sua operação — tudo forjado sob medida, no fogo e no detalhe.</p>
     <div class="hero-cta">
-      <a class="btn lg" href="https://wa.me/5537998652824?text=Oi!%20Vi%20a%20p%C3%A1gina%20da%20Vulcane%20e%20quero%20forjar%20meu%20site.">Forjar meu site →</a>
-      <a class="btn lg ghost" href="#prova">Ver como funciona</a>
+      <a class="btn lg" href="#servicos">Ver serviços</a>
+      <a class="btn lg ghost" href="https://wa.me/5537998652824?text=Oi!%20Quero%20um%20or%C3%A7amento%20com%20a%20Vulcane.">Pedir orçamento</a>
     </div>
-    <p class="hero-note">Sem enrolação. Você vê o resultado antes de decidir.</p>
+    <p class="hero-note">Atendimento direto: você fala com quem desenvolve.</p>
+  </div>
+</section>
+
+<section class="section" id="sobre">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Quem somos</span>
+      <h2>Tecnologia que resolve, não que complica</h2>
+      <p>A Vulcane é uma empresa de tecnologia de Divinópolis. Criamos sites e desenvolvemos sistemas sob medida para empresas que querem vender mais e trabalhar melhor. Nada de pacote engessado: entendemos a sua necessidade e forjamos a solução certa — no fogo e no detalhe.</p>
+    </div>
   </div>
 </section>
 
 <div class="stats">
   <div class="wrap">
-    <div class="stat"><b>+70%</b><span>das compras acontecem pelo celular</span></div>
-    <div class="stat"><b>3s</b><span>é o que você tem antes da pessoa desistir</span></div>
-    <div class="stat"><b>2x</b><span>mais vendas com o mesmo tráfego de hoje</span></div>
+    <div class="stat"><b>Sob medida</b><span>cada projeto pensado pro seu negócio</span></div>
+    <div class="stat"><b>Direto</b><span>você fala com quem desenvolve</span></div>
+    <div class="stat"><b>Daqui</b><span>de Divinópolis, pra região toda</span></div>
   </div>
 </div>
 
-<section class="section truth" id="prova">
+<section class="section truth" id="servicos">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">A verdade que dói</span>
-      <h2>Todo dia você perde vendas — e nem percebe</h2>
-      <p>Não é que seu site esteja “ruim”. É que ele deixa dinheiro na mesa em silêncio.</p>
+      <span class="eyebrow">O que fazemos</span>
+      <h2>Nossos serviços</h2>
+      <p>Do site que vende à automação que organiza sua operação.</p>
     </div>
-    <div class="truth-grid">
-      <div class="tcard">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-        <h3>Você paga anúncio</h3>
-        <p>Traz gente pro site com dinheiro do bolso. Se o site converte mal, cada real rende menos do que poderia.</p>
-      </div>
-      <div class="tcard">
-        <div class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
-        <h3>Trava no celular</h3>
-        <p>Site lento, difícil de navegar ou de comprar no telefone = carrinho abandonado. E é lá que estão seus clientes.</p>
-      </div>
-      <div class="tcard">
-        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div>
-        <h3>Primeira impressão</h3>
-        <p>Um site datado passa insegurança. Cliente compra — e paga mais — de quem parece profissional e confiável.</p>
-      </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 9h20M6 21h12"/></svg></div><div><h3>Criação de sites</h3><p>Sites profissionais, rápidos e feitos pro celular — pensados pra transformar visitante em cliente.</p></div></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 019-9 9 9 0 018 5"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 01-9 9 9 9 0 01-8-5"/><path d="M3 21v-5h5"/></svg></div><div><h3>Modernização de sites</h3><p>Seu site atual repaginado: mais moderno, mais rápido e vendendo mais, sem perder o que já funciona.</p></div></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 20h10M8 9l2 2-2 2M13 13h3"/></svg></div><div><h3>Sistemas sob medida</h3><p>Softwares personalizados pra automatizar processos: pedidos, cadastros, controle, relatórios — o que seu negócio precisar.</p></div></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l2 5 5 .5-4 3.5 1.5 5L12 18l-4.5 3 1.5-5-4-3.5 5-.5z"/></svg></div><div><h3>Manutenção &amp; suporte</h3><p>Acompanhamento contínuo: hospedagem, atualizações, ajustes e um humano do seu lado quando precisar.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section truth" id="sistemas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Sistemas sob medida</span>
+      <h2>O sistema que o seu negócio precisa</h2>
+      <p>Cansou de planilha, caderno e retrabalho? A gente desenvolve o software que organiza sua operação — do jeito que você trabalha.</p>
+    </div>
+    <div class="cards3">
+      <div class="feat" style="flex-direction:column"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 3h16v4H4zM6 7v14M18 7v14M9 11h6M9 15h6"/></svg></div><div><h3>Restaurantes &amp; food</h3><p>Pedidos, comandas, cardápio digital, controle de mesas, delivery e status no WhatsApp.</p></div></div>
+      <div class="feat" style="flex-direction:column"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h4v12H4zM16 6h4v12h-4zM8 12h8M2 9v6M22 9v6"/></svg></div><div><h3>Academias</h3><p>Gestão de alunos, planos, mensalidades, controle de presença e fichas de treino.</p></div></div>
+      <div class="feat" style="flex-direction:column"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg></div><div><h3>Controle de estoque</h3><p>Entradas e saídas, produtos, alertas de estoque baixo, relatórios e vendas.</p></div></div>
+    </div>
+    <div style="text-align:center;margin-top:26px">
+      <p style="color:var(--muted);max-width:560px;margin:0 auto 18px">E <strong style="color:var(--ink)">qualquer outra demanda</strong>: se o seu negócio tem um processo repetitivo, a gente automatiza. Conta o que você precisa que a gente forja.</p>
+      <a class="btn" href="https://wa.me/5537998652824?text=Oi!%20Quero%20um%20sistema%20sob%20medida%20pra%20minha%20empresa.">Quero um sistema sob medida</a>
     </div>
   </div>
 </section>
@@ -307,30 +336,14 @@ footer b{color:var(--ink);font-family:var(--sg)}
 <section class="section">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Antes e depois</span>
-      <h2>A diferença que aparece no caixa</h2>
+      <span class="eyebrow">Por que a Vulcane</span>
+      <h2>Parceiro de tecnologia, não fornecedor sumido</h2>
     </div>
-    <div class="ba-grid">
-      <div class="ba old">
-        <div class="ba-top">✕ Site comum</div>
-        <div class="ba-body"><ul>
-          <li><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg> Demora pra carregar</li>
-          <li><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg> Difícil de usar no celular</li>
-          <li><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg> Visual que não passa confiança</li>
-          <li><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg> Cliente entra e sai sem comprar</li>
-          <li><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg> Você depende de terceiros pra mexer</li>
-        </ul></div>
-      </div>
-      <div class="ba new">
-        <div class="ba-top">✓ Site que vende</div>
-        <div class="ba-body"><ul>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Rápido e leve</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Feito primeiro pro celular</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Visual moderno e profissional</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Caminho claro até a compra</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Painel simples pra você gerenciar sozinho</li>
-        </ul></div>
-      </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 6.5L21 9l-5 4 1.5 7L12 16l-5.5 4L8 13 3 9l6.5-.5z"/></svg></div><div><h3>Sob medida de verdade</h3><p>Nada de template genérico. A gente entende seu negócio e constrói a solução certa pra ele.</p></div></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><h3>Atendimento direto</h3><p>Você fala com quem desenvolve, do orçamento à entrega. Sem call center, sem intermediário.</p></div></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div><div><h3>Foco em resultado</h3><p>Site que vende, sistema que economiza tempo. Tecnologia que dá retorno, não que enfeita.</p></div></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div><div><h3>Continuidade</h3><p>A gente não some depois de entregar. Suporte e evolução contínua do seu projeto.</p></div></div>
     </div>
   </div>
 </section>
@@ -338,29 +351,14 @@ footer b{color:var(--ink);font-family:var(--sg)}
 <section class="section truth">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">O que você recebe</span>
-      <h2>Tudo pronto pra vender. Sem dor de cabeça.</h2>
+      <span class="eyebrow">Como trabalhamos</span>
+      <h2>Do problema à solução, em 4 passos</h2>
     </div>
     <div class="feat-grid">
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M11 18h2"/></svg></div><div><h3>Otimizado pro celular</h3><p>Onde acontecem a maioria das suas vendas.</p></div></div>
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div><div><h3>Rápido de verdade</h3><p>Carrega em segundos. Nada de cliente impaciente.</p></div></div>
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div><div><h3>Pensado pra converter</h3><p>Cada seção guia a pessoa até a compra ou o contato.</p></div></div>
-      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 01-.1 1l2 1.5-2 3.5-2.3-1a7 7 0 01-1.7 1l-.4 2.5h-4l-.4-2.5a7 7 0 01-1.7-1l-2.3 1-2-3.5 2-1.5a7 7 0 010-2l-2-1.5 2-3.5 2.3 1a7 7 0 011.7-1L10 2h4l.4 2.5a7 7 0 011.7 1l2.3-1 2 3.5-2 1.5c.1.3.1.6.1 1z"/></svg></div><div><h3>Painel próprio</h3><p>Você adiciona produto, troca foto e banner sem depender de ninguém.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="section obj">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Sem rodeios</span>
-      <h2>O que passa pela sua cabeça agora</h2>
-    </div>
-    <div class="obj-list">
-      <div class="qa"><h3>Meu site já tá bom.</h3><p>Ótimo — e vende. Mas <strong>“bom” custa as vendas que você nem percebe que perde.</strong> Meu trabalho não é trocar o que funciona: é fazer o mesmo cliente comprar mais.</p></div>
-      <div class="qa"><h3>Tá caro.</h3><p>Pensa como investimento: <strong>se render 2 ou 3 vendas a mais por semana, em quanto tempo se paga?</strong> Depois disso, é lucro todo mês.</p></div>
-      <div class="qa"><h3>Já tenho quem cuida.</h3><p>Perfeito ter alguém de confiança. Eu entrego um <strong>nível profissional de conversão</strong> e um painel tão simples que qualquer um mantém depois.</p></div>
-      <div class="qa"><h3>Será que vale mesmo?</h3><p>Você não precisa acreditar na minha palavra. <strong>Eu te mostro sua empresa já modernizada antes de você pagar qualquer coisa.</strong></p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><h3>1 · Conversa</h3><p>Você conta o que precisa. A gente entende seu negócio e sua dor.</p></div></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12c1 1 1 2 1 3h6c0-1 0-2 1-3a7 7 0 00-4-12z"/></svg></div><div><h3>2 · Proposta</h3><p>Desenhamos a solução e o orçamento sob medida — sem pacote engessado.</p></div></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 7l-1.5-2h-9v14h17V7z"/><path d="M9 13l2 2 4-4"/></svg></div><div><h3>3 · Desenvolvimento</h3><p>A gente forja o site ou sistema, com você acompanhando de perto.</p></div></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg></div><div><h3>4 · Entrega &amp; suporte</h3><p>Colocamos no ar, treinamos você e seguimos dando suporte.</p></div></div>
     </div>
   </div>
 </section>
@@ -393,40 +391,13 @@ footer b{color:var(--ink);font-family:var(--sg)}
   </div>
 </section>
 
-<section class="section" id="preco">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Investimento</span>
-      <h2>Direto ao ponto</h2>
-      <p>Sem pacote confuso. Você sabe exatamente o que paga e o que recebe.</p>
-    </div>
-    <div class="price-box">
-      <span class="flag">◆ Condição de lançamento</span>
-      <h3>Site completo + painel</h3>
-      <div class="old">de R$ 8.000</div>
-      <div class="now">R$ 3.945<span style="font-size:1rem;color:var(--muted)"> *</span></div>
-      <div class="cond">à vista ou parcelado · manutenção opcional a partir de R$ 297/mês</div>
-      <ul>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Site novo (ou modernização do atual)</li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Otimizado pro celular e pra converter</li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Painel pra você gerenciar sozinho</li>
-        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Suporte e acompanhamento</li>
-      </ul>
-      <a class="btn lg" href="https://wa.me/5537998652824?text=Oi%20Igor!%20Vi%20sua%20p%C3%A1gina%20e%20quero%20saber%20mais%20sobre%20modernizar%20meu%20site." style="width:100%;justify-content:center">Garantir minha condição</a>
-      <p style="font-size:.78rem;color:var(--muted);margin-top:14px">*Valor de referência. O orçamento final depende do tamanho do seu projeto — falamos rápido pra fechar.</p>
-    </div>
-    <div class="guarantee">
-      <svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
-      <div><b>Você vê antes de pagar.</b><p>Eu preparo uma prévia do seu site já modernizado. Gostou, a gente fecha. Não gostou, você não perdeu nada.</p></div>
-    </div>
-  </div>
-</section>
+<!-- preço sob medida: orçamento pelo WhatsApp -->
 
 <section class="final" id="contato">
   <div class="wrap">
-    <span class="eyebrow">Bora?</span>
-    <h2>Cada dia com o site parado<br>é venda que não volta.</h2>
-    <p>Me manda uma mensagem. Em minutos eu te digo o que dá pra forjar pela sua empresa — sem compromisso.</p>
+    <span class="eyebrow">Bora conversar?</span>
+    <h2>Conta sua ideia.<br>A gente forja a solução.</h2>
+    <p>Site, sistema ou os dois — manda uma mensagem que em minutos a gente te diz o que dá pra fazer pela sua empresa. Sem compromisso.</p>
     <a class="btn lg" href="https://wa.me/5537998652824?text=Oi%20Igor!%20Vi%20sua%20p%C3%A1gina%20e%20quero%20saber%20mais%20sobre%20modernizar%20meu%20site.">
       <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm5.8 14.3c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.8s.7-2 .9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.4.6c-.1.2-.3.3-.1.6.1.2.6 1 1.4 1.6.9.8 1.7 1 2 1.2.2.1.4.1.5-.1l.6-.8c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.5.3.1.3.1.7-.1 1.4z"/></svg>
       Chamar no WhatsApp
@@ -451,7 +422,7 @@ footer b{color:var(--ink);font-family:var(--sg)}
 </section>
 
 <footer>
-  <div class="wrap"><b>Vulcane.</b> · Criação e modernização de sites · Divinópolis/MG · Atendemos Divinópolis e região</div>
+  <div class="wrap"><b>Vulcane.</b> · Sites e sistemas sob medida · Divinópolis/MG · Atendemos toda a região</div>
 </footer>
 
 <a class="wa-float" href="https://wa.me/5537998652824?text=Oi%20Igor!%20Quero%20saber%20mais." aria-label="WhatsApp">
