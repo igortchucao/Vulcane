@@ -91,7 +91,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(13,15,20,.82);backdrop-f
 /* hero */
 .hero{position:relative;padding:84px 0 70px;overflow:hidden}
 .hero::before{content:"";position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:820px;height:820px;background:radial-gradient(circle,rgba(255,90,31,.14),transparent 62%);pointer-events:none}
-.hero-in{position:relative;text-align:center;max-width:820px;margin:0 auto}
+.hero-embers{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.hero-in{position:relative;z-index:2;text-align:center;max-width:820px;margin:0 auto}
 .tagline{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);padding:8px 16px;border-radius:100px;font-size:.82rem;color:var(--muted);margin-bottom:26px}
 .tagline .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(255,90,31,.18)}
 .hero h1{font-size:clamp(2.3rem,6.2vw,4.1rem);margin-bottom:22px}
@@ -276,6 +277,7 @@ footer b{color:var(--ink);font-family:var(--sg)}
 </header>
 
 <section class="hero">
+  <canvas class="hero-embers" aria-hidden="true"></canvas>
   <div class="wrap hero-in">
     <span class="tagline"><span class="dot"></span> Tecnologia sob medida · Divinópolis e região</span>
     <h1>Sites e <span class="hl">sistemas</span><br>que fazem seu negócio crescer</h1>
@@ -287,6 +289,27 @@ footer b{color:var(--ink);font-family:var(--sg)}
     <p class="hero-note">Atendimento direto: você fala com quem desenvolve.</p>
   </div>
 </section>
+
+<script>
+(function(){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var c=document.querySelector('.hero-embers');if(!c)return;
+  var x=c.getContext('2d'),W,H,dpr=Math.min(window.devicePixelRatio||1,2);
+  function size(){var r=c.getBoundingClientRect();W=r.width;H=r.height;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);}
+  size();window.addEventListener('resize',size);
+  var P=[];function mk(){return{x:Math.random()*W,y:H+10,r:Math.random()*1.6+.5,s:Math.random()*.55+.22,d:(Math.random()-.5)*.3,a:Math.random()*.45+.25,life:0,max:Math.random()*260+160};}
+  for(var i=0;i<60;i++){P.push(mk());P[i].y=Math.random()*H;}
+  function loop(){x.clearRect(0,0,W,H);x.globalCompositeOperation='lighter';
+    for(var i=0;i<P.length;i++){var p=P[i];p.life++;p.y-=p.s;p.x+=p.d+Math.sin(p.life*.03)*.18;
+      var t=p.life/p.max,fd=t<.15?t/.15:t>.7?(1-t)/.3:1,al=p.a*Math.max(0,fd);
+      var g=x.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*3);
+      g.addColorStop(0,'rgba(255,180,90,'+al+')');g.addColorStop(.5,'rgba(255,90,31,'+al*.7+')');g.addColorStop(1,'rgba(255,90,31,0)');
+      x.fillStyle=g;x.beginPath();x.arc(p.x,p.y,p.r*3,0,7);x.fill();
+      if(p.y<-10||p.life>p.max)P[i]=mk();}
+    x.globalCompositeOperation='source-over';requestAnimationFrame(loop);}
+  loop();
+})();
+</script>
 
 <section class="section" id="sobre">
   <div class="wrap">
