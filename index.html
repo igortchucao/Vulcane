@@ -292,13 +292,13 @@ footer b{color:var(--ink);font-family:var(--sg)}
 
 <script>
 (function(){
-  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   var c=document.querySelector('.hero-embers');if(!c)return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var x=c.getContext('2d'),W,H,dpr=Math.min(window.devicePixelRatio||1,2);
   function size(){var r=c.getBoundingClientRect();W=r.width;H=r.height;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);}
   size();window.addEventListener('resize',size);
   var P=[];function mk(){return{x:Math.random()*W,y:H+10,r:Math.random()*1.6+.5,s:Math.random()*.55+.22,d:(Math.random()-.5)*.3,a:Math.random()*.45+.25,life:0,max:Math.random()*260+160};}
-  for(var i=0;i<60;i++){P.push(mk());P[i].y=Math.random()*H;}
+  var N=reduce?24:60;for(var i=0;i<N;i++){P.push(mk());P[i].y=Math.random()*H;}
   function loop(){x.clearRect(0,0,W,H);x.globalCompositeOperation='lighter';
     for(var i=0;i<P.length;i++){var p=P[i];p.life++;p.y-=p.s;p.x+=p.d+Math.sin(p.life*.03)*.18;
       var t=p.life/p.max,fd=t<.15?t/.15:t>.7?(1-t)/.3:1,al=p.a*Math.max(0,fd);
