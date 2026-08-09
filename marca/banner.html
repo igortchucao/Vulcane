@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Banner de divulgação · Vulcane</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0a0f;--card:#14121a;--line:#2a2632;--ink:#f4f1ec;--muted:#9a94a3;--ember:#ff5a1f;--gold:#ffc24d;
+--sg:'Space Grotesk',sans-serif;--i:'Inter',sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:#08070b;color:var(--ink);font-family:var(--i);padding:36px 18px;line-height:1.5}
+.wrap{max-width:900px;margin:0 auto}
+h1{font-family:var(--sg);font-weight:700;font-size:1.7rem;margin-bottom:6px}
+.sub{color:var(--muted);margin-bottom:30px}
+.eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ember);font-weight:600;font-family:var(--sg)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
+.card h2{font-family:var(--sg);font-size:1.1rem;margin-bottom:12px}
+.card canvas{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);background:#000}
+.card .st canvas{max-width:260px;margin:0 auto}
+.row{display:flex;gap:9px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+button{background:var(--ember);border:none;color:#160a04;padding:11px 18px;border-radius:9px;font-family:var(--sg);font-weight:700;font-size:.86rem;cursor:pointer;transition:.2s}
+button:hover{background:#ff7d3c}
+.field{margin:6px 0 20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
+.field label{color:var(--muted);font-size:.85rem}
+.field select{background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:9px;padding:9px 12px;font-family:var(--i);font-size:.9rem}
+.tip{background:var(--card);border-left:3px solid var(--ember);border-radius:10px;padding:16px 18px;color:var(--muted);font-size:.87rem;margin-top:8px}
+.tip b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">Divulgação</span>
+  <h1>Banner da Vulcane</h1>
+  <p class="sub">Escolha a mensagem, veja a prévia e baixe em alta resolução pra postar.</p>
+
+  <div class="field">
+    <label>Mensagem:</label>
+    <select id="msg" onchange="draw()">
+      <option value="0">Forjamos sites que vendem</option>
+      <option value="1">Sites e sistemas sob medida</option>
+      <option value="2">Sua empresa merece um site profissional</option>
+      <option value="3">Prévia grátis do seu site novo</option>
+    </select>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>📷 Post (1080×1080)</h2>
+      <canvas id="cPost" width="1080" height="1080"></canvas>
+      <div class="row"><button onclick="dl('cPost','vulcane-post')">Baixar PNG</button></div>
+    </div>
+    <div class="card st">
+      <h2>📱 Story (1080×1920)</h2>
+      <canvas id="cStory" width="1080" height="1920"></canvas>
+      <div class="row"><button onclick="dl('cStory','vulcane-story')">Baixar PNG</button></div>
+    </div>
+  </div>
+
+  <div class="tip"><b>Como usar:</b> baixa o PNG → posta no feed do Instagram (post), nos stories (story) ou manda no WhatsApp / status. As duas versões já vêm no tamanho certo, em alta.</div>
+</div>
+
+<script>
+const PATH="M11 6 L31 6 L50 50 L72 6 L86 6 L56 66 L44 66 Z";
+const MSGS=[
+  {slogan:"FORJAMOS SITES\nQUE VENDEM", sub:"Sites • Sistemas sob medida • Divinópolis MG"},
+  {slogan:"SITES E SISTEMAS\nSOB MEDIDA", sub:"Restaurante • Academia • Estoque • e o que você precisar"},
+  {slogan:"SUA EMPRESA MERECE\nUM SITE PROFISSIONAL", sub:"Criação e modernização • Divinópolis e região"},
+  {slogan:"PRÉVIA GRÁTIS\nDO SEU SITE NOVO", sub:"A gente monta, você vê. Sem compromisso."},
+];
+
+function drawMark(ctx,x,y,size,color){
+  ctx.save(); ctx.translate(x,y); ctx.scale(size/100,size/100);
+  ctx.fillStyle=color; ctx.fill(new Path2D(PATH));
+  ctx.beginPath(); ctx.arc(50,84,10,0,7); ctx.fill(); ctx.restore();
+}
+
+function drawBanner(cv){
+  const ctx=cv.getContext('2d'), W=cv.width, H=cv.height;
+  const M=MSGS[+document.getElementById('msg').value];
+  // fundo
+  ctx.fillStyle="#0b0a0f"; ctx.fillRect(0,0,W,H);
+  // brilho brasa (topo)
+  let g=ctx.createRadialGradient(W/2,H*0.14,0,W/2,H*0.14,W*0.7);
+  g.addColorStop(0,"rgba(255,90,31,.28)"); g.addColorStop(1,"rgba(255,90,31,0)");
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+  // brilho baixo
+  g=ctx.createRadialGradient(W/2,H*1.05,0,W/2,H*1.05,W*0.6);
+  g.addColorStop(0,"rgba(199,54,27,.25)"); g.addColorStop(1,"rgba(199,54,27,0)");
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+  // borda sutil
+  ctx.strokeStyle="rgba(255,90,31,.35)"; ctx.lineWidth=W*0.006;
+  ctx.strokeRect(W*0.03,H*0.03,W*0.94,H*0.94);
+
+  const cx=W/2;
+  // símbolo V com glow
+  const markH=W*0.17;
+  ctx.save(); ctx.shadowColor="rgba(255,90,31,.6)"; ctx.shadowBlur=W*0.05;
+  drawMark(ctx, cx-markH*0.42, H*(H>W?0.20:0.17), markH, "#ff5a1f");
+  ctx.restore();
+
+  // wordmark "Vulcane."
+  const wf=W*0.108;
+  ctx.font=`700 ${wf}px "Space Grotesk", sans-serif`;
+  ctx.textAlign="center"; ctx.textBaseline="alphabetic";
+  const wy=H>W?H*0.36:H*0.35;
+  const wV=ctx.measureText("Vulcane").width, wDot=ctx.measureText(".").width, tot=wV+wDot;
+  ctx.fillStyle="#f4f1ec"; ctx.textAlign="left";
+  ctx.fillText("Vulcane", cx-tot/2, wy);
+  ctx.fillStyle="#ff5a1f";
+  ctx.fillText(".", cx-tot/2+wV, wy);
+  // "A FORJA DIGITAL"
+  ctx.textAlign="center"; ctx.fillStyle="#9a94a3";
+  ctx.font=`600 ${W*0.026}px "Space Grotesk", sans-serif`;
+  ctx.fillText("A F O R J A   D I G I T A L", cx, wy+W*0.05);
+
+  // slogan (2 linhas)
+  const sy=H>W?H*0.52:H*0.52;
+  ctx.fillStyle="#f4f1ec"; ctx.font=`700 ${W*0.066}px "Space Grotesk", sans-serif`;
+  const lines=M.slogan.split("\n");
+  lines.forEach((l,i)=>ctx.fillText(l, cx, sy+i*W*0.078));
+
+  // linha brasa
+  ctx.strokeStyle="#ff5a1f"; ctx.lineWidth=W*0.008; ctx.lineCap="round";
+  const ly=sy+lines.length*W*0.078+W*0.005;
+  ctx.beginPath(); ctx.moveTo(cx-W*0.09,ly); ctx.lineTo(cx+W*0.09,ly); ctx.stroke();
+
+  // subtítulo
+  ctx.fillStyle="#c9c2b8"; ctx.font=`500 ${W*0.03}px "Inter", sans-serif`;
+  ctx.fillText(M.sub, cx, ly+W*0.06);
+
+  // contato (rodapé)
+  ctx.fillStyle="#ff5a1f"; ctx.font=`700 ${W*0.05}px "Space Grotesk", sans-serif`;
+  ctx.fillText("vulcane.com.br", cx, H*(H>W?0.86:0.855));
+  ctx.fillStyle="#9a94a3"; ctx.font=`500 ${W*0.03}px "Inter", sans-serif`;
+  ctx.fillText("@vulcane.sites   •   (37) 9 9865-2824", cx, H*(H>W?0.90:0.90));
+}
+
+async function draw(){
+  await document.fonts.load('700 100px "Space Grotesk"');
+  await document.fonts.load('600 40px "Inter"');
+  await document.fonts.ready;
+  drawBanner(document.getElementById('cPost'));
+  drawBanner(document.getElementById('cStory'));
+}
+function dl(id,nome){
+  document.getElementById(id).toBlob(b=>{
+    const a=document.createElement('a'); a.href=URL.createObjectURL(b);
+    a.download=nome+".png"; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+  },'image/png');
+}
+draw();
+</script>
+</body>
+</html>
