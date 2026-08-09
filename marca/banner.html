@@ -95,26 +95,27 @@ function drawBanner(cv){
   ctx.strokeRect(W*0.03,H*0.03,W*0.94,H*0.94);
 
   const cx=W/2;
-  // símbolo V com glow
-  const markH=W*0.17;
-  ctx.save(); ctx.shadowColor="rgba(255,90,31,.6)"; ctx.shadowBlur=W*0.05;
-  drawMark(ctx, cx-markH*0.42, H*(H>W?0.20:0.17), markH, "#ff5a1f");
-  ctx.restore();
-
-  // wordmark "Vulcane."
-  const wf=W*0.108;
+  // LOGO oficial: o V forjado é a letra do nome -> [V]ulcane.
+  const wf=W*0.14;
+  const wy=H>W?H*0.28:H*0.30;
   ctx.font=`700 ${wf}px "Space Grotesk", sans-serif`;
-  ctx.textAlign="center"; ctx.textBaseline="alphabetic";
-  const wy=H>W?H*0.36:H*0.35;
-  const wV=ctx.measureText("Vulcane").width, wDot=ctx.measureText(".").width, tot=wV+wDot;
-  ctx.fillStyle="#f4f1ec"; ctx.textAlign="left";
-  ctx.fillText("Vulcane", cx-tot/2, wy);
-  ctx.fillStyle="#ff5a1f";
-  ctx.fillText(".", cx-tot/2+wV, wy);
+  ctx.textBaseline="alphabetic";
+  const markH=wf*0.92, markW=wf*0.78;
+  const wText=ctx.measureText("ulcane").width, wDot=ctx.measureText(".").width;
+  const tot=markW - wf*0.02 + wText + wDot;
+  const startX=cx-tot/2;
+  ctx.save(); ctx.shadowColor="rgba(255,90,31,.55)"; ctx.shadowBlur=W*0.045;
+  drawMark(ctx, startX, wy-markH, markH, "#ff5a1f");
+  ctx.restore();
+  let tx=startX+markW-wf*0.02;
+  ctx.textAlign="left"; ctx.fillStyle="#f4f1ec";
+  ctx.fillText("ulcane", tx, wy);
+  tx+=ctx.measureText("ulcane").width;
+  ctx.fillStyle="#ff5a1f"; ctx.fillText(".", tx, wy);
   // "A FORJA DIGITAL"
   ctx.textAlign="center"; ctx.fillStyle="#9a94a3";
   ctx.font=`600 ${W*0.026}px "Space Grotesk", sans-serif`;
-  ctx.fillText("A F O R J A   D I G I T A L", cx, wy+W*0.05);
+  ctx.fillText("A F O R J A   D I G I T A L", cx, wy+W*0.055);
 
   // slogan (2 linhas)
   const sy=H>W?H*0.52:H*0.52;
