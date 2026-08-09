@@ -77,66 +77,74 @@ function drawMark(ctx,x,y,size,color){
   ctx.beginPath(); ctx.arc(50,84,10,0,7); ctx.fill(); ctx.restore();
 }
 
+function lockup(ctx,x,baseline,F,glow){
+  ctx.font=`700 ${F}px "Space Grotesk", sans-serif`;
+  ctx.textBaseline="alphabetic"; ctx.textAlign="left";
+  const markH=F*0.92, markW=F*0.78;
+  if(glow){ctx.save();ctx.shadowColor="rgba(255,90,31,.55)";ctx.shadowBlur=F*0.5;}
+  drawMark(ctx,x,baseline-markH,markH,"#ff5a1f");
+  if(glow)ctx.restore();
+  let tx=x+markW-F*0.02;
+  ctx.fillStyle="#f4f1ec"; ctx.fillText("ulcane",tx,baseline);
+  tx+=ctx.measureText("ulcane").width;
+  ctx.fillStyle="#ff5a1f"; ctx.fillText(".",tx,baseline);
+  return tx+ctx.measureText(".").width;
+}
+
 function drawBanner(cv){
   const ctx=cv.getContext('2d'), W=cv.width, H=cv.height;
   const M=MSGS[+document.getElementById('msg').value];
+  const tall=H>W, padL=W*0.085;
+
   // fundo
-  ctx.fillStyle="#0b0a0f"; ctx.fillRect(0,0,W,H);
-  // brilho brasa (topo)
-  let g=ctx.createRadialGradient(W/2,H*0.14,0,W/2,H*0.14,W*0.7);
-  g.addColorStop(0,"rgba(255,90,31,.28)"); g.addColorStop(1,"rgba(255,90,31,0)");
+  ctx.fillStyle="#08070c"; ctx.fillRect(0,0,W,H);
+  // grade sutil de pontos
+  ctx.fillStyle="rgba(255,255,255,.035)"; const s=W*0.052;
+  for(let y=s;y<H;y+=s)for(let x=s;x<W;x+=s){ctx.beginPath();ctx.arc(x,y,W*0.0035,0,7);ctx.fill();}
+  // profundidade: glow roxo topo-esq + brasa baixo-dir
+  let g=ctx.createRadialGradient(W*0.08,H*0.04,0,W*0.08,H*0.04,W*0.75);
+  g.addColorStop(0,"rgba(140,70,255,.16)"); g.addColorStop(1,"rgba(140,70,255,0)");
   ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-  // brilho baixo
-  g=ctx.createRadialGradient(W/2,H*1.05,0,W/2,H*1.05,W*0.6);
-  g.addColorStop(0,"rgba(199,54,27,.25)"); g.addColorStop(1,"rgba(199,54,27,0)");
+  g=ctx.createRadialGradient(W*0.95,H*1.0,0,W*0.95,H*1.0,W*0.95);
+  g.addColorStop(0,"rgba(255,90,31,.42)"); g.addColorStop(1,"rgba(255,90,31,0)");
   ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-  // borda sutil
-  ctx.strokeStyle="rgba(255,90,31,.35)"; ctx.lineWidth=W*0.006;
-  ctx.strokeRect(W*0.03,H*0.03,W*0.94,H*0.94);
-
-  const cx=W/2;
-  // LOGO oficial: o V forjado é a letra do nome -> [V]ulcane.
-  const wf=W*0.14;
-  const wy=H>W?H*0.28:H*0.30;
-  ctx.font=`700 ${wf}px "Space Grotesk", sans-serif`;
-  ctx.textBaseline="alphabetic";
-  const markH=wf*0.92, markW=wf*0.78;
-  const wText=ctx.measureText("ulcane").width, wDot=ctx.measureText(".").width;
-  const tot=markW - wf*0.02 + wText + wDot;
-  const startX=cx-tot/2;
-  ctx.save(); ctx.shadowColor="rgba(255,90,31,.55)"; ctx.shadowBlur=W*0.045;
-  drawMark(ctx, startX, wy-markH, markH, "#ff5a1f");
+  // V gigante marca d'água (sangra no canto direito)
+  ctx.save(); ctx.globalAlpha=0.06;
+  drawMark(ctx, W*0.52, tall?H*0.4:H*0.24, W*0.82, "#ff5a1f");
   ctx.restore();
-  let tx=startX+markW-wf*0.02;
-  ctx.textAlign="left"; ctx.fillStyle="#f4f1ec";
-  ctx.fillText("ulcane", tx, wy);
-  tx+=ctx.measureText("ulcane").width;
-  ctx.fillStyle="#ff5a1f"; ctx.fillText(".", tx, wy);
-  // "A FORJA DIGITAL"
-  ctx.textAlign="center"; ctx.fillStyle="#9a94a3";
-  ctx.font=`600 ${W*0.026}px "Space Grotesk", sans-serif`;
-  ctx.fillText("A F O R J A   D I G I T A L", cx, wy+W*0.055);
 
-  // slogan (2 linhas)
-  const sy=H>W?H*0.52:H*0.52;
-  ctx.fillStyle="#f4f1ec"; ctx.font=`700 ${W*0.066}px "Space Grotesk", sans-serif`;
+  ctx.textAlign="left";
+  // logo pequena no topo
+  lockup(ctx, padL, H*(tall?0.11:0.135), W*0.058, false);
+  // eyebrow
+  ctx.fillStyle="#8f8aa0"; ctx.font=`600 ${W*0.024}px "Space Grotesk", sans-serif`;
+  ctx.fillText("A  F O R J A  D I G I T A L", padL, H*(tall?0.155:0.185));
+
+  // headline grande (última linha em brasa)
   const lines=M.slogan.split("\n");
-  lines.forEach((l,i)=>ctx.fillText(l, cx, sy+i*W*0.078));
-
-  // linha brasa
-  ctx.strokeStyle="#ff5a1f"; ctx.lineWidth=W*0.008; ctx.lineCap="round";
-  const ly=sy+lines.length*W*0.078+W*0.005;
-  ctx.beginPath(); ctx.moveTo(cx-W*0.09,ly); ctx.lineTo(cx+W*0.09,ly); ctx.stroke();
-
+  const hf=W*(tall?0.092:0.088), lh=hf*1.04;
+  let hy=H*(tall?0.42:0.44);
+  ctx.font=`700 ${hf}px "Space Grotesk", sans-serif`;
+  lines.forEach((l,i)=>{
+    ctx.fillStyle = i===lines.length-1 ? "#ff5a1f" : "#f4f1ec";
+    if(i===lines.length-1){ctx.save();ctx.shadowColor="rgba(255,90,31,.45)";ctx.shadowBlur=W*0.03;}
+    ctx.fillText(l, padL, hy+i*lh);
+    if(i===lines.length-1)ctx.restore();
+  });
+  // régua brasa
+  const ly=hy+lines.length*lh - hf*0.15;
+  ctx.strokeStyle="#ff5a1f"; ctx.lineWidth=W*0.009; ctx.lineCap="round";
+  ctx.beginPath(); ctx.moveTo(padL,ly); ctx.lineTo(padL+W*0.16,ly); ctx.stroke();
   // subtítulo
-  ctx.fillStyle="#c9c2b8"; ctx.font=`500 ${W*0.03}px "Inter", sans-serif`;
-  ctx.fillText(M.sub, cx, ly+W*0.06);
+  ctx.fillStyle="#b8b2c4"; ctx.font=`500 ${W*0.031}px "Inter", sans-serif`;
+  ctx.fillText(M.sub, padL, ly+W*0.06);
 
-  // contato (rodapé)
-  ctx.fillStyle="#ff5a1f"; ctx.font=`700 ${W*0.05}px "Space Grotesk", sans-serif`;
-  ctx.fillText("vulcane.com.br", cx, H*(H>W?0.86:0.855));
-  ctx.fillStyle="#9a94a3"; ctx.font=`500 ${W*0.03}px "Inter", sans-serif`;
-  ctx.fillText("@vulcane.sites   •   (37) 9 9865-2824", cx, H*(H>W?0.90:0.90));
+  // rodapé: contato
+  const fy=H*(tall?0.92:0.9);
+  ctx.fillStyle="#ff5a1f"; ctx.font=`700 ${W*0.046}px "Space Grotesk", sans-serif`;
+  ctx.fillText("vulcane.com.br", padL, fy);
+  ctx.fillStyle="#8f8aa0"; ctx.font=`500 ${W*0.028}px "Inter", sans-serif`;
+  ctx.fillText("@vulcane.sites   ·   (37) 9 9865-2824", padL, fy+W*0.045);
 }
 
 async function draw(){
